@@ -93,7 +93,7 @@ export const translations = {
                 name: "Name must be at least 2 characters.",
                 email: "Please enter a valid email address.",
                 message: "Message must be at least 10 characters.",
-                success: "Message sent! (Check console)",
+                success: "Message sent!",
             },
         },
         technologies: {
@@ -210,7 +210,7 @@ export const translations = {
                 name: "Nome deve ter pelo menos 2 caracteres.",
                 email: "Por favor insira um email válido.",
                 message: "Mensagem deve ter pelo menos 10 caracteres.",
-                success: "Mensagem enviada! (Verifique o console)",
+                success: "Mensagem enviada!",
             },
         },
         technologies: {
@@ -327,7 +327,7 @@ export const translations = {
                 name: "El nombre debe tener al menos 2 caracteres.",
                 email: "Por favor ingresa un correo válido.",
                 message: "El mensaje debe tener al menos 10 caracteres.",
-                success: "¡Mensaje enviado! (Revisa la consola)",
+                success: "¡Mensaje enviado!",
             },
         },
         technologies: {
