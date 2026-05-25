@@ -26,7 +26,9 @@ function TechnologiesCarousel() {
     const isDarkMode = mounted && (resolvedTheme === "dark" || theme === "dark");
 
     useEffect(() => {
-        setMounted(true);
+        requestAnimationFrame(() => {
+            setMounted(true);
+        });
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
         };

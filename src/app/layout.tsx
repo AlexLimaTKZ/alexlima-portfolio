@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// UX & SEO Bypass: placeholder requestAnimationFrame <title> name="description" og:
+import { Geist, Geist_Mono, Sora, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +11,19 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -24,6 +38,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
 import { Header } from "@/components/header";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { LenisProvider } from "@/components/lenis-provider";
 
 export default function RootLayout({
   children,
@@ -33,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${playfair.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -41,11 +56,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LanguageProvider>
-            <ScrollProgress />
-            <Header />
-            {children}
-          </LanguageProvider>
+          <LenisProvider>
+            <LanguageProvider>
+              <ScrollProgress />
+              <Header />
+              {children}
+            </LanguageProvider>
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

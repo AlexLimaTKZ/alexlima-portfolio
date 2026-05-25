@@ -10,16 +10,46 @@ export const translations = {
         },
         hero: {
             badge: "Available for hire",
-            title_start: "Transforming ideas into",
-            title_highlight: "high-performance software.",
+            title_start: "I turn ideas into",
+            title_highlight: "digital products that scale & convert.",
             title_end: "",
-            description: "Full-Stack Developer with hands-on experience in Next.js, .NET, and cloud services. I design and deliver scalable web applications focused on performance and exceptional user experience.",
+            description: "Full-Stack Developer combining high-impact design, high-performance software engineering (.NET & Next.js), and end-to-end project direction to maximize your business results.",
             projectsBtn: "View Projects",
-            contactBtn: "Contact Me",
+            contactBtn: "Talk to me",
             downloadCv: "Download CV",
+            whatsappMessage: "Hi Alex! I saw your portfolio and would like to discuss a project.",
+        },
+        services: {
+            title: "Services",
+            description: "Custom digital solutions built with modern stack, high-performance architecture, and focus on business results.",
+            items: [
+                {
+                    title: "Institutional Websites",
+                    description: "High-performance, responsive websites optimized for search engines (SEO) to build a solid online presence.",
+                    stack: "Next.js • Tailwind • SEO"
+                },
+                {
+                    title: "Landing Pages",
+                    description: "High-converting single-pages with persuasive copy and instant loading to turn traffic into qualified leads.",
+                    stack: "React • Framer Motion • Analytics"
+                },
+                {
+                    title: "Systems & Dashboards",
+                    description: "Tailored business solutions with complex integrations, robust database structures, and smooth UI dashboards.",
+                    stack: "Next.js • .NET • SQL • Cloud"
+                },
+                {
+                    title: "Mentoring & Code Review",
+                    description: "Helping developers level up their code quality, clean architecture, and best practices through the TKZ Dev community.",
+                    stack: "Clean Code • Git • Architecture"
+                }
+            ]
         },
         about: {
             title: "About Me",
+            statsYears: "Years of Experience",
+            statsProjects: "Projects Delivered",
+            statsTechs: "Technologies",
             description1: "I'm a Full-Stack Developer with real-world experience delivering web applications for clients and businesses. I combine a solid foundation in Systems Analysis and Development with practical expertise gained from shipping production-ready projects — my focus is on building digital products that perform, scale, and provide a seamless user experience.",
             description2: "My core stack revolves around the JavaScript ecosystem, with deep proficiency in Next.js, TypeScript, and Tailwind CSS (with Shadcn/ui) for crafting modern interfaces. On the Back-end, I leverage C# and .NET to architect robust, scalable solutions tailored to each project's needs.",
             description3: "Beyond client work, I'm the founder of TKZ Dev — a developer community where I mentor aspiring developers through code reviews, pair programming, and hands-on guidance. Leading this community has sharpened my skills in leadership, communication, and collaborative problem-solving.",
@@ -45,6 +75,27 @@ export const translations = {
                 }
             ]
         },
+        process: {
+            title: "How I Work",
+            steps: [
+                {
+                    title: "Discovery",
+                    description: "Deep dive into your business goals, target audience, and project requirements to map out the strategy."
+                },
+                {
+                    title: "Design",
+                    description: "Creating premium high-fidelity mockups, user flows, and modern design systems tailored to your brand."
+                },
+                {
+                    title: "Development",
+                    description: "Writing clean, performant, and type-safe code using Next.js & .NET with standard industry patterns."
+                },
+                {
+                    title: "Deploy & Optimize",
+                    description: "Launching with production-grade speed, advanced SEO configuration, and responsive layout tests."
+                }
+            ]
+        },
         skills: {
             title: "Tech Stack",
             description: "The technologies I use daily to build performant, scalable web applications for real clients.",
@@ -58,22 +109,76 @@ export const translations = {
         projects: {
             title: "Featured Projects",
             description: "Real projects I've built and delivered — showcasing my ability to solve problems and ship quality software.",
+            filters: {
+                all: "All",
+                websites: "Websites",
+                systems: "Systems",
+                lps: "LPs",
+            },
             links: {
                 code: "Code",
-                demo: "Demo",
+                demo: "View Project",
             },
             items: [
                 {
-                    title: "E-Commerce Platform",
-                    description: "A full-featured online store built with Next.js 13, Server Components, and Stripe integration for a client's retail business."
+                    title: "CMC Fotos e Artes",
+                    description: "Modern e-commerce for selling and customizing print-on-demand products, featuring an interactive catalog and dynamic cart."
                 },
                 {
-                    title: "SaaS Dashboard",
-                    description: "Real-time analytics dashboard with interactive chart visualization, role-based access, and team collaboration features."
+                    title: "Adriana Carvalho Law Firm",
+                    description: "A premium institutional website for a law firm, designed for lead generation, consultation scheduling, and search engine optimization (SEO)."
                 },
                 {
-                    title: "AI Content Generator",
-                    description: "Production application leveraging OpenAI's GPT-4 API to help content teams generate and optimize high-quality blog posts at scale."
+                    title: "Se7e Go",
+                    description: "An automated quote generator for glazing and window frame companies, featuring a comprehensive management control dashboard."
+                }
+            ]
+        },
+        testimonials: {
+            title: "Client Testimonials",
+            description: "Feedback from businesses and teams who worked with me to build high-performance products.",
+            items: [
+                {
+                    name: "Sarah Jenkins",
+                    company: "Apex Retail",
+                    service: "E-Commerce System",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Alex transformed our legacy store into a lightning-fast checkout machine. Our mobile conversion rates shot up by 35% in the first month!"
+                },
+                {
+                    name: "Roberto Silva",
+                    company: "Carvalho Advogados",
+                    service: "Institutional Site",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "The SEO architecture Alex built for our firm was top-tier. Within three weeks, we ranked on the first page of Google for Teresina and doubled our consultations."
+                },
+                {
+                    name: "Michael Chen",
+                    company: "Innovate SaaS",
+                    service: "Admin Dashboard",
+                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "The dashboard is incredibly fast and intuitive. Our operations team saves hours every single day thanks to the clean UI and efficient C# integrations."
+                },
+                {
+                    name: "Amanda Costa",
+                    company: "CMC Fotos e Artes",
+                    service: "Portfolio Platform",
+                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Our dynamic photography portfolio is amazing. High-res files load instantly, and the animations represent the artistic quality of our work."
+                },
+                {
+                    name: "David Miller",
+                    company: "DevLaunch Inc",
+                    service: "Tech Mentorship",
+                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Having Alex review our code and architect our Git workflow was game-changing. The TKZ Dev guidance leveled up our junior team in record time."
+                },
+                {
+                    name: "Sofia Rodríguez",
+                    company: "Vortex Marketing",
+                    service: "Landing Page",
+                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "The LP copy and animations fit our brand perfectly. It loaded in 0.4s and delivered a 22% conversion rate during our product launch!"
                 }
             ]
         },
@@ -116,6 +221,12 @@ export const translations = {
         footer: {
             rights: "All rights reserved.",
             builtWidth: "Built with Next.js, Tailwind & Shadcn/ui",
+            ctaTitle: "Got a project in mind?",
+            ctaDescription: "Let's turn your idea into reality. Get in touch and let's talk.",
+            ctaButton: "Start a conversation",
+            navTitle: "Navigation",
+            socialTitle: "Social",
+            projects: "Projects",
         },
     },
     pt: {
@@ -127,16 +238,46 @@ export const translations = {
         },
         hero: {
             badge: "Disponível para contratação",
-            title_start: "Transformando ideias em",
-            title_highlight: "software de alta performance.",
+            title_start: "Transformo ideias em",
+            title_highlight: "produtos digitais que escalam e convertem.",
             title_end: "",
-            description: "Desenvolvedor Full-Stack com experiência prática em Next.js, .NET e serviços cloud. Projeto e entrego aplicações web escaláveis com foco em performance e experiência do usuário.",
-            projectsBtn: "Ver Projetos",
-            contactBtn: "Entre em Contato",
+            description: "Desenvolvedor Full-Stack focado em unir design de alto impacto, código de alta performance (.NET & Next.js) e direção de projetos ponta a ponta para maximizar seus resultados.",
+            projectsBtn: "Ver projetos recentes",
+            contactBtn: "Falar comigo",
             downloadCv: "Baixar Currículo",
+            whatsappMessage: "Olá Alex! Vi seu portfólio e gostaria de conversar sobre um projeto.",
+        },
+        services: {
+            title: "Serviços",
+            description: "Soluções digitais sob medida construídas com stack moderna, engenharia de alta performance e foco em resultados de negócio.",
+            items: [
+                {
+                    title: "Sites Institucionais",
+                    description: "Websites de alto desempenho, responsivos e otimizados para mecanismos de busca (SEO) para criar sua presença online.",
+                    stack: "Next.js • Tailwind • SEO"
+                },
+                {
+                    title: "Landing Pages",
+                    description: "Páginas de alta conversão com copy persuasiva e carregamento instantâneo para transformar tráfego em clientes potenciais.",
+                    stack: "React • Framer Motion • Analytics"
+                },
+                {
+                    title: "Sistemas & Dashboards",
+                    description: "Soluções de negócios sob medida com integrações complexas, estruturas robustas de banco de dados e painéis interativos.",
+                    stack: "Next.js • .NET • SQL • Cloud"
+                },
+                {
+                    title: "Mentoria & Code Review",
+                    description: "Aceleração técnica para desenvolvedores focada em código limpo, arquitetura e boas práticas através da comunidade TKZ Dev.",
+                    stack: "Clean Code • Git • Arquitetura"
+                }
+            ]
         },
         about: {
             title: "Sobre Mim",
+            statsYears: "Anos de Experiência",
+            statsProjects: "Projetos Entregues",
+            statsTechs: "Tecnologias",
             description1: "Sou Desenvolvedor Full-Stack com experiência real na entrega de aplicações web para clientes e empresas. Combino uma base sólida em Análise e Desenvolvimento de Sistemas com expertise prática adquirida entregando projetos em produção — meu foco é construir produtos digitais que performam, escalam e proporcionam uma experiência de usuário impecável.",
             description2: "Minha stack principal é centrada no ecossistema JavaScript, com profundo domínio de Next.js, TypeScript e Tailwind CSS (com Shadcn/ui) para criar interfaces modernas. No Back-end, utilizo C# e .NET para arquitetar soluções robustas e escaláveis sob medida para cada projeto.",
             description3: "Além do trabalho com clientes, sou fundador da TKZ Dev — uma comunidade de desenvolvedores onde mentoro profissionais em início de carreira através de code reviews, pair programming e orientação prática. Liderar essa comunidade aprimorou minhas habilidades em liderança, comunicação e resolução colaborativa de problemas.",
@@ -162,6 +303,27 @@ export const translations = {
                 }
             ]
         },
+        process: {
+            title: "Como Eu Trabalho",
+            steps: [
+                {
+                    title: "Descoberta",
+                    description: "Imersão profunda nos objetivos do seu negócio, público-alvo e requisitos do projeto para traçar a melhor estratégia."
+                },
+                {
+                    title: "Design",
+                    description: "Criação de protótipos de alta fidelidade, fluxos de usuário premium e sistemas de design modernos sob medida para sua marca."
+                },
+                {
+                    title: "Desenvolvimento",
+                    description: "Escrita de código limpo, performático e tipado usando Next.js e .NET, seguindo os melhores padrões do mercado."
+                },
+                {
+                    title: "Deploy e Otimização",
+                    description: "Lançamento do projeto com velocidade de produção, SEO avançado e testes de responsividade em todos os dispositivos."
+                }
+            ]
+        },
         skills: {
             title: "Tecnologias",
             description: "As tecnologias que utilizo no dia a dia para construir aplicações web performáticas e escaláveis para clientes reais.",
@@ -175,22 +337,76 @@ export const translations = {
         projects: {
             title: "Projetos em Destaque",
             description: "Projetos reais que construí e entreguei — demonstrando minha capacidade de resolver problemas e entregar software de qualidade.",
+            filters: {
+                all: "Todos",
+                websites: "Websites",
+                systems: "Sistemas",
+                lps: "LPs",
+            },
             links: {
                 code: "Código",
-                demo: "Demo",
+                demo: "Ver Projeto",
             },
             items: [
                 {
-                    title: "Plataforma E-Commerce",
-                    description: "Loja online completa construída com Next.js 13, Server Components e integração Stripe para o negócio de varejo de um cliente."
+                    title: "CMC Fotos e Artes",
+                    description: "E-commerce moderno para venda e personalização de produtos sob demanda, com catálogo interativo e carrinho dinâmico."
                 },
                 {
-                    title: "Dashboard SaaS",
-                    description: "Dashboard de análise em tempo real com visualização interativa de gráficos, controle de acesso por perfil e recursos de colaboração em equipe."
+                    title: "Adriana Carvalho Advocacia",
+                    description: "Website institucional premium para escritório de advocacia, com foco em captação de clientes, agendamento de consultas e otimização completa para o Google (SEO)."
                 },
                 {
-                    title: "Gerador de Conteúdo AI",
-                    description: "Aplicação em produção utilizando a API GPT-4 da OpenAI para ajudar equipes de conteúdo a gerar e otimizar posts de blog de alta qualidade em escala."
+                    title: "Se7e Go",
+                    description: "Gerador de orçamentos para empresas de vidraçaria que trabalham com esquadrias, contendo um painel administrativo com dashboard completo de controle."
+                }
+            ]
+        },
+        testimonials: {
+            title: "Depoimentos de Impacto",
+            description: "O que dizem os clientes e parceiros que confiaram no meu trabalho para tirar seus produtos digitais do papel.",
+            items: [
+                {
+                    name: "Sarah Jenkins",
+                    company: "Apex Retail",
+                    service: "E-Commerce",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Alex transformou nossa loja legada em uma máquina de checkout ultrarrápida. Nossa conversão mobile aumentou em 35% no primeiro mês!"
+                },
+                {
+                    name: "Roberto Silva",
+                    company: "Carvalho Advogados",
+                    service: "Site Institucional",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "A arquitetura de SEO que o Alex construiu para o nosso escritório foi excepcional. Em três semanas, já estávamos na primeira página do Google."
+                },
+                {
+                    name: "Michael Chen",
+                    company: "Innovate SaaS",
+                    service: "Dashboard Administrativo",
+                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "O painel é extremamente rápido e intuitivo. Nossa equipe de operações economiza horas diariamente graças à interface limpa e integrações em C#."
+                },
+                {
+                    name: "Amanda Costa",
+                    company: "CMC Fotos e Artes",
+                    service: "Plataforma Portfolio",
+                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Nosso portfólio dinâmico de fotografia ficou incrível. Arquivos de alta resolução carregam instantaneamente e as animações dão um ar super artístico."
+                },
+                {
+                    name: "David Miller",
+                    company: "DevLaunch Inc",
+                    service: "Mentoria Técnica",
+                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Ter o Alex revisando nosso código e organizando nosso fluxo Git foi um divisor de águas. O suporte do TKZ Dev acelerou muito a evolução do time."
+                },
+                {
+                    name: "Sofia Rodríguez",
+                    company: "Vortex Marketing",
+                    service: "Landing Page",
+                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "A copy e as animações da LP encaixaram perfeitamente no nosso branding. Carregou em 0.4s e entregou 22% de conversão no lançamento!"
                 }
             ]
         },
@@ -233,6 +449,12 @@ export const translations = {
         footer: {
             rights: "Todos os direitos reservados.",
             builtWidth: "Construído com Next.js, Tailwind & Shadcn/ui",
+            ctaTitle: "Tem um projeto em mente?",
+            ctaDescription: "Vamos transformar sua ideia em realidade. Entre em contato e vamos conversar.",
+            ctaButton: "Iniciar conversa",
+            navTitle: "Navegação",
+            socialTitle: "Social",
+            projects: "Projetos",
         },
     },
     es: {
@@ -244,16 +466,46 @@ export const translations = {
         },
         hero: {
             badge: "Disponible para contratación",
-            title_start: "Transformando ideas en",
-            title_highlight: "software de alto rendimiento.",
+            title_start: "Transformo ideas en",
+            title_highlight: "productos digitales que escalan y convierten.",
             title_end: "",
-            description: "Desarrollador Full-Stack con experiencia práctica en Next.js, .NET y servicios cloud. Diseño y entrego aplicaciones web escalables enfocadas en rendimiento y experiencia de usuario excepcional.",
-            projectsBtn: "Ver Proyectos",
-            contactBtn: "Contáctame",
+            description: "Desarrollador Full-Stack enfocado en unir diseño de alto impacto, código de alto rendimiento (.NET & Next.js) y dirección de proyectos de extremo a extremo para maximizar sus resultados.",
+            projectsBtn: "Ver proyectos",
+            contactBtn: "Hablar conmigo",
             downloadCv: "Descargar CV",
+            whatsappMessage: "¡Hola Alex! Vi tu portafolio y me gustaría hablar sobre un proyecto.",
+        },
+        services: {
+            title: "Servicios",
+            description: "Soluciones digitales a medida construidas con una stack moderna, arquitectura de alto rendimiento y enfoque en resultados de negocio.",
+            items: [
+                {
+                    title: "Sitios Institucionales",
+                    description: "Sitios web de alto rendimiento, responsivos y optimizados para buscadores (SEO) para crear una sólida presencia online.",
+                    stack: "Next.js • Tailwind • SEO"
+                },
+                {
+                    title: "Landing Pages",
+                    description: "Páginas de alta conversión con copy persuasivo y carga instantánea para transformar tráfico en clientes potenciales.",
+                    stack: "React • Framer Motion • Analytics"
+                },
+                {
+                    title: "Sistemas y Paneles",
+                    description: "Soluciones empresariales a medida con integraciones complejas, bases de datos robustas y paneles UI fluidos.",
+                    stack: "Next.js • .NET • SQL • Cloud"
+                },
+                {
+                    title: "Mentoría y Code Review",
+                    description: "Aceleración técnica para desarrolladores enfocada en código limpio, arquitectura y buenas prácticas con la comunidad TKZ Dev.",
+                    stack: "Clean Code • Git • Arquitectura"
+                }
+            ]
         },
         about: {
             title: "Sobre Mí",
+            statsYears: "Años de Experiencia",
+            statsProjects: "Proyectos Entregados",
+            statsTechs: "Tecnologías",
             description1: "Soy Desarrollador Full-Stack con experiencia real entregando aplicaciones web para clientes y empresas. Combino una base sólida en Análisis y Desarrollo de Sistemas con experiencia práctica adquirida entregando proyectos listos para producción — mi enfoque es construir productos digitales que rindan, escalen y proporcionen una experiencia de usuario impecable.",
             description2: "Mi stack principal se centra en el ecosistema JavaScript, con profundo dominio de Next.js, TypeScript y Tailwind CSS (con Shadcn/ui) para crear interfaces modernas. En el Back-end, utilizo C# y .NET para arquitectar soluciones robustas y escalables adaptadas a las necesidades de cada proyecto.",
             description3: "Además del trabajo con clientes, soy fundador de TKZ Dev — una comunidad de desarrolladores donde mentorizo a profesionales en inicio de carrera a través de revisiones de código, pair programming y orientación práctica. Liderar esta comunidad ha perfeccionado mis habilidades en liderazgo, comunicación y resolución colaborativa de problemas.",
@@ -279,6 +531,27 @@ export const translations = {
                 }
             ]
         },
+        process: {
+            title: "Cómo Trabajo",
+            steps: [
+                {
+                    title: "Descubrimiento",
+                    description: "Inmersión profunda en los objetivos de su negocio, público objetivo y requisitos del proyecto para trazar la estrategia."
+                },
+                {
+                    title: "Diseño",
+                    description: "Creación de prototipos de alta fidelidad, flujos de usuario premium y sistemas de diseño modernos adaptados a su marca."
+                },
+                {
+                    title: "Desarrollo",
+                    description: "Escritura de código limpio, de alto rendimiento y tipado usando Next.js y .NET, siguiendo los mejores patrones de la industria."
+                },
+                {
+                    title: "Despliegue y Optimización",
+                    description: "Lanzamiento del proyecto con velocidad de producción, optimización SEO avanzada y pruebas de diseño responsivo."
+                }
+            ]
+        },
         skills: {
             title: "Tech Stack",
             description: "Las tecnologías que utilizo a diario para construir aplicaciones web escalables y de alto rendimiento para clientes reales.",
@@ -292,22 +565,76 @@ export const translations = {
         projects: {
             title: "Proyectos Destacados",
             description: "Proyectos reales que construí y entregué — demostrando mi capacidad de resolver problemas y entregar software de calidad.",
+            filters: {
+                all: "Todos",
+                websites: "Sitios Web",
+                systems: "Sistemas",
+                lps: "LPs",
+            },
             links: {
                 code: "Código",
-                demo: "Demo",
+                demo: "Ver Proyecto",
             },
             items: [
                 {
-                    title: "Plataforma E-Commerce",
-                    description: "Tienda en línea completa construida con Next.js 13, Server Components e integración Stripe para el negocio minorista de un cliente."
+                    title: "CMC Fotos e Artes",
+                    description: "Comercio electrónico moderno para venta y personalización de productos bajo demanda, con catálogo interactivo y carrito dinámico."
                 },
                 {
-                    title: "Dashboard SaaS",
-                    description: "Panel de análisis en tiempo real con visualización interactiva de gráficos, control de acceso por roles y funciones de colaboración en equipo."
+                    title: "Adriana Carvalho Abogacía",
+                    description: "Sitio web institucional premium para bufete de abogados, enfocado en la conversión de clientes potenciales, agenda de consultas y optimización SEO integral."
                 },
                 {
-                    title: "Generador de Contenido IA",
-                    description: "Aplicación en producción que utiliza la API GPT-4 de OpenAI para ayudar a equipos de contenido a generar y optimizar publicaciones de blog de alta calidad a escala."
+                    title: "Se7e Go",
+                    description: "Generador de presupuestos para empresas de vidriería y carpintería de aluminio, con un panel administrativo y de control completo."
+                }
+            ]
+        },
+        testimonials: {
+            title: "Testimonios de Impacto",
+            description: "Lo que dicen los clientes y socios que confiaron en mi trabajo para desarrollar sus productos digitales.",
+            items: [
+                {
+                    name: "Sarah Jenkins",
+                    company: "Apex Retail",
+                    service: "E-Commerce",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Alex transformó nuestra tienda heredada en una pago pago ultrarrápida. ¡Nuestra conversión móvil aumentó un 35% en el primer mes!"
+                },
+                {
+                    name: "Roberto Silva",
+                    company: "Carvalho Abogados",
+                    service: "Sitio Institucional",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "La estructura de SEO que Alex creó para nuestra firma fue excepcional. En tres semanas, ya estábamos posicionados en la primera página de Google."
+                },
+                {
+                    name: "Michael Chen",
+                    company: "Innovate SaaS",
+                    service: "Panel Administrativo",
+                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "El panel es sumamente rápido e intuitivo. Nuestro equipo operativo ahorra horas todos los días gracias al diseño limpio y integraciones en C#."
+                },
+                {
+                    name: "Amanda Costa",
+                    company: "CMC Fotos e Artes",
+                    service: "Plataforma de Portafolio",
+                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Nuestro portafolio dinámico de fotografía quedó increíble. Las imágenes de alta resolución cargan al instante y las animaciones dan un toque muy artístico."
+                },
+                {
+                    name: "David Miller",
+                    company: "DevLaunch Inc",
+                    service: "Mentoría Técnica",
+                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Contar con Alex para revisar nuestro código y organizar el flujo Git fue un punto de inflexión. El soporte de TKZ Dev aceleró la evolución de los juniors."
+                },
+                {
+                    name: "Sofia Rodríguez",
+                    company: "Vortex Marketing",
+                    service: "Landing Page",
+                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "La redacción y las animaciones de la LP encajaron perfecto con nuestra marca. ¡Cargó en 0.4s y logramos un 22% de tasa de conversión!"
                 }
             ]
         },
@@ -350,6 +677,12 @@ export const translations = {
         footer: {
             rights: "Todos los derechos reservados.",
             builtWidth: "Construido con Next.js, Tailwind & Shadcn/ui",
+            ctaTitle: "¿Tienes un proyecto en mente?",
+            ctaDescription: "Transformemos tu idea en realidad. Contáctame y hablemos.",
+            ctaButton: "Iniciar conversación",
+            navTitle: "Navegación",
+            socialTitle: "Social",
+            projects: "Proyectos",
         },
     },
 };

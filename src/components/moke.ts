@@ -1,3 +1,4 @@
+import React from "react";
 import {
     SiJavascript,
     SiTypescript,
@@ -31,7 +32,7 @@ export type Icon = {
     | "Rust"
     | "Python"
     | "React";
-    IconComponent: any;
+    IconComponent: React.ElementType;
     colorDark: string;
     colorLight: string;
 };

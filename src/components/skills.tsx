@@ -16,7 +16,7 @@ export function Skills() {
                 transition={{ duration: 0.5 }}
                 className="text-center mb-10"
             >
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">{t.skills.title}</h2>
+                <h2 className="font-display text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">{t.skills.title}</h2>
                 <p className="text-muted-foreground text-lg max-w-[800px] mx-auto">
                     {t.skills.description}
                 </p>
