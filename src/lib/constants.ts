@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
     name: "Alex Lima",
     role: "Full Stack Developer",
     shortName: "TKZ Dev",
-    url: "https://alexlima.dev",
+    url: "https://alexlima-portfolio.vercel.app",
     ogImage: "/opengraph-image.png",
     description: "Portfolio de Alex Lima (Lider TKZ), Desenvolvedor Full Stack especializado em Next.js, TypeScript e .NET.",
     keywords: [

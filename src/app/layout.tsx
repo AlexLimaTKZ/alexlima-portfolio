@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sora, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import "./reduced-motion.css";
 import { SITE_CONFIG, PERSON_SCHEMA } from "@/lib/constants";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-provider";
@@ -33,6 +34,9 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
+  alternates: {
+    canonical: SITE_CONFIG.url,
+  },
   title: {
     default: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
     template: `%s | ${SITE_CONFIG.name}`,
