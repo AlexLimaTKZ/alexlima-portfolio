@@ -1,16 +1,29 @@
 "use client"
 
 import React, { useEffect, useRef, useState, useCallback } from "react"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
-import { Github, Camera, Scale, LayoutDashboard, ChevronLeft, ChevronRight } from "lucide-react"
+import { Github, Camera, Scale, LayoutDashboard, ChevronLeft, ChevronRight, Briefcase } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/components/language-provider"
 
 // 1. ESTRUTURA DE DADOS ISOLADA (MOCK DOS PROJETOS)
 const PROJECTS_DATA = [
+    {
+        id: "tkzjobs",
+        category: "sistemas",
+        tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Job Board"],
+        github: "",
+        demo: "https://tkz-jobsdev.vercel.app/",
+        glowClass: "bg-blue-500/10",
+        image: "/tkzjobs.png",
+        year: "2026",
+        titlePlaceholder: "TKZ Jobs Dev",
+        descriptionPlaceholder: "Plataforma de vagas e oportunidades em tecnologia para desenvolvedores."
+    },
     {
         id: "cmc",
         category: "websites",
@@ -51,6 +64,7 @@ const PROJECTS_DATA = [
 
 // Mapeamento estático de ícones dos mockups adaptado para temas Claro/Escuro
 const ICONS_MAP: Record<string, { icon: React.ElementType; bg: string; border: string; text: string }> = {
+    tkzjobs: { icon: Briefcase, bg: "dark:bg-blue-500/10 bg-blue-500/10", border: "dark:border-blue-500/20 border-blue-200/60", text: "dark:text-blue-400 text-blue-600" },
     cmc: { icon: Camera, bg: "dark:bg-blue-500/10 bg-blue-500/10", border: "dark:border-blue-500/20 border-blue-200/60", text: "dark:text-blue-400 text-blue-600" },
     adriana: { icon: Scale, bg: "dark:bg-emerald-500/10 bg-emerald-500/10", border: "dark:border-emerald-500/20 border-emerald-200/60", text: "dark:text-emerald-400 text-emerald-600" },
     se7ego: { icon: LayoutDashboard, bg: "dark:bg-cyan-500/10 bg-cyan-500/10", border: "dark:border-cyan-500/20 border-cyan-200/60", text: "dark:text-cyan-400 text-cyan-600" },
@@ -89,13 +103,15 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
                 
                 {/* Visual cap image wrapper */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
-                    <img
+                    <Image
                         src={project.image}
                         alt={project.title}
-                        className={`w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
+                        fill
+                        sizes="(max-width: 640px) 270px, (max-width: 1024px) 380px, 500px"
+                        className={`object-cover transition-all duration-500 ease-out group-hover:scale-105 ${
                             isActive ? "opacity-100 brightness-[1.1]" : "opacity-90 brightness-[0.9]"
                         }`}
-                        draggable="false"
+                        draggable={false}
                     />
                 </div>
 
@@ -261,14 +277,19 @@ export function Projects() {
             xOffset = isMobile ? 110 : (isTablet ? 180 : 280)
         } else if (relativePos === -1) {
             xOffset = isMobile ? -110 : (isTablet ? -180 : -280)
+        } else if (relativePos > 1) {
+            xOffset = isMobile ? 220 : (isTablet ? 360 : 500)
+        } else if (relativePos < -1) {
+            xOffset = isMobile ? -220 : (isTablet ? -360 : -500)
         }
         
-        // Opacidade e escala melhoradas para maior visibilidade dos cards laterais (0.75 no desktop e 0.40 no mobile)
-        // Usamos escala 1.0 no card ativo para evitar interpolação de subpixels e garantir nitidez perfeita de texto
-        const opacity = relativePos === 0 ? 1 : (isMobile ? 0.4 : 0.75)
-        const scale = relativePos === 0 ? 1.0 : 0.85
-        const rotateY = relativePos === 0 ? 0 : (relativePos === 1 ? -28 : 28)
-        const zIndex = relativePos === 0 ? 30 : 10
+        const isCenter = relativePos === 0
+        const isNeighbor = Math.abs(relativePos) === 1
+
+        const opacity = isCenter ? 1 : (isNeighbor ? (isMobile ? 0.4 : 0.75) : 0)
+        const scale = isCenter ? 1.0 : (isNeighbor ? 0.85 : 0.65)
+        const rotateY = isCenter ? 0 : (relativePos > 0 ? -28 : 28)
+        const zIndex = isCenter ? 30 : (isNeighbor ? 10 : 0)
         
         return {
             x: xOffset,
@@ -276,7 +297,7 @@ export function Projects() {
             opacity,
             zIndex,
             rotateY,
-            pointerEvents: relativePos === 0 ? ("auto" as const) : ("none" as const)
+            pointerEvents: (isCenter || isNeighbor) ? ("auto" as const) : ("none" as const)
         }
     }
 
@@ -353,10 +374,17 @@ export function Projects() {
                         return (
                             <motion.div
                                 key={project.id}
-                                className="absolute w-full max-w-[270px] sm:max-w-[380px] md:max-w-[500px] will-change-transform"
+                                className={`absolute w-full max-w-[270px] sm:max-w-[380px] md:max-w-[500px] will-change-transform ${
+                                    relativePos !== 0 ? "cursor-pointer" : ""
+                                }`}
                                 style={{ transformStyle: "preserve-3d" }}
                                 animate={cardStyles}
                                 transition={{ type: "spring", stiffness: 220, damping: 25 }}
+                                onClick={() => {
+                                    if (relativePos !== 0) {
+                                        setCurrentIndex(idx)
+                                    }
+                                }}
                             >
                                 <ProjectCard
                                     project={project}

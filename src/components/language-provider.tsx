@@ -23,6 +23,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         }
     }, [])
 
+    useEffect(() => {
+        const langMap: Record<Language, string> = {
+            pt: "pt-BR",
+            en: "en",
+            es: "es"
+        }
+        if (typeof document !== "undefined") {
+            document.documentElement.lang = langMap[language] || "pt-BR"
+        }
+    }, [language])
+
     const handleSetLanguage = (lang: Language) => {
         setLanguage(lang)
         localStorage.setItem("language", lang)

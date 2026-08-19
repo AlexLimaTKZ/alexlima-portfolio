@@ -7,8 +7,7 @@
 ---
 
 **Project:** Alex Lima Portfolio
-**Generated:** 2026-05-23 17:57:28
-**Category:** Developer Tool / IDE
+**Category:** Full Stack Developer Portfolio / Modern Tech Blueprint
 
 ---
 
@@ -16,27 +15,25 @@
 
 ### Color Palette
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#1E293B` | `--color-primary` |
-| Secondary | `#334155` | `--color-secondary` |
-| CTA/Accent | `#22C55E` | `--color-cta` |
-| Background | `#0F172A` | `--color-background` |
-| Text | `#F8FAFC` | `--color-text` |
+| Role | Hex | CSS Token / Class |
+|------|-----|-------------------|
+| Primary Accent | `#06b6d4` (Cyan 500) | `text-cyan-400`, `bg-cyan-500` |
+| Secondary Accent | `#3b82f6` (Blue 500) | `text-blue-500`, `bg-blue-600` |
+| Hero & Deep Dark Bg | `#0c1220` / `#090d16` | `--color-background`, `bg-[#0c1220]` |
+| Card Glass Dark | `rgba(15, 23, 42, 0.45)` | `.glass-card`, `dark:bg-zinc-950/40` |
+| Foreground / Text | `#F8FAFC` / `#FFFFFF` | `text-foreground`, `text-white` |
+| Muted Foreground | `#94A3B8` / `#A1A1AA` | `text-muted-foreground`, `text-zinc-400` |
 
-**Color Notes:** Code dark + run green
+**Color Notes:** Deep cosmic navy base (`#0c1220`) with cyan-blue neon accents and glassmorphism.
 
 ### Typography
 
-- **Heading Font:** Archivo
-- **Body Font:** Space Grotesk
-- **Mood:** minimal, portfolio, designer, creative, clean, artistic
-- **Google Fonts:** [Archivo + Space Grotesk](https://fonts.google.com/share?selection.family=Archivo:wght@300;400;500;600;700|Space+Grotesk:wght@300;400;500;600;700)
-
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-```
+- **Display & Headings Font:** Sora (`var(--font-sora)`)
+- **Editorial Italic Accent:** Playfair Display (`var(--font-serif)`)
+- **Body Font:** Geist Sans (`var(--font-geist-sans)`)
+- **Technical & Code Font:** Geist Mono (`var(--font-geist-mono)`)
+- **Signature Font:** Autography (`/fonts/autography/Autography.otf`)
+- **Mood:** futuristic, precise, minimal, high-impact, full-stack engineer
 
 ### Spacing Variables
 
@@ -50,154 +47,34 @@
 | `--space-2xl` | `48px` / `3rem` | Section margins |
 | `--space-3xl` | `64px` / `4rem` | Hero padding |
 
-### Shadow Depths
-
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
-
 ---
 
 ## Component Specs
 
-### Buttons
-
-```css
-/* Primary Button */
-.btn-primary {
-  background: #22C55E;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: #1E293B;
-  border: 2px solid #1E293B;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
-  cursor: pointer;
-}
+### Primary Button (Pill Gradient)
+```tsx
+<Button className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-10 py-5 shadow-[0_0_40px_rgba(6,182,212,0.3)]">
+  Action
+</Button>
 ```
 
-### Cards
-
+### Glass Cards
 ```css
-.card {
-  background: #0F172A;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+.glass-card {
+  background: rgba(15, 15, 15, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
 }
 ```
-
-### Inputs
-
-```css
-.input {
-  padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: border-color 200ms ease;
-}
-
-.input:focus {
-  border-color: #1E293B;
-  outline: none;
-  box-shadow: 0 0 0 3px #1E293B20;
-}
-```
-
-### Modals
-
-```css
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: var(--shadow-xl);
-  max-width: 500px;
-  width: 90%;
-}
-```
-
----
-
-## Style Guidelines
-
-**Style:** Vibrant & Block-based
-
-**Keywords:** Bold, energetic, playful, block layout, geometric shapes, high color contrast, duotone, modern, energetic
-
-**Best For:** Startups, creative agencies, gaming, social media, youth-focused, entertainment, consumer
-
-**Key Effects:** Large sections (48px+ gaps), animated patterns, bold hover (color shift), scroll-snap, large type (32px+), 200-300ms
-
-### Page Pattern
-
-**Pattern Name:** Portfolio Grid
-
-- **Conversion Strategy:**  hover overlay info,  lightbox view, Visuals first. Filter by category. Fast loading essential.
-- **CTA Placement:** Project Card Hover + Footer Contact
-- **Section Order:** 1. Hero (Name/Role), 2. Project Grid (Masonry), 3. About/Philosophy, 4. Contact
-
----
-
-## Anti-Patterns (Do NOT Use)
-
-- ❌ Flat design without depth
-- ❌ Text-heavy pages
-
-### Additional Forbidden Patterns
-
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
-- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
 
 ---
 
 ## Pre-Delivery Checklist
 
-Before delivering any UI code, verify:
-
-- [ ] No emojis used as icons (use SVG instead)
-- [ ] All icons from consistent icon set (Heroicons/Lucide)
-- [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
-- [ ] Focus states visible for keyboard navigation
-- [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
-- [ ] No horizontal scroll on mobile
+- [x] No emojis used as icons (use Lucide SVG icons)
+- [x] All images optimized with `next/image` (`<Image />`)
+- [x] `cursor-pointer` on all clickable cards and buttons
+- [x] Smooth transitions (150-300ms) with Framer Motion spring physics
+- [x] Accessible contrast in dark & light themes
+- [x] Responsive layout across mobile, tablet, desktop

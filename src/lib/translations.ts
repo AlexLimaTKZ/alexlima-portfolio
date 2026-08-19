@@ -16,7 +16,6 @@ export const translations = {
             description: "Full-Stack Developer combining high-impact design, high-performance software engineering (.NET & Next.js), and end-to-end project direction to maximize your business results.",
             projectsBtn: "View Projects",
             contactBtn: "Talk to me",
-            downloadCv: "Download CV",
             whatsappMessage: "Hi Alex! I saw your portfolio and would like to discuss a project.",
         },
         services: {
@@ -120,6 +119,10 @@ export const translations = {
                 demo: "View Project",
             },
             items: [
+                {
+                    title: "TKZ Jobs Dev",
+                    description: "Developer job board platform connecting tech talent with companies, featuring smart search, categorical filtering, and instant applications."
+                },
                 {
                     title: "CMC Fotos e Artes",
                     description: "Modern e-commerce for selling and customizing print-on-demand products, featuring an interactive catalog and dynamic cart."
@@ -244,7 +247,6 @@ export const translations = {
             description: "Desenvolvedor Full-Stack focado em unir design de alto impacto, código de alta performance (.NET & Next.js) e direção de projetos ponta a ponta para maximizar seus resultados.",
             projectsBtn: "Ver projetos recentes",
             contactBtn: "Falar comigo",
-            downloadCv: "Baixar Currículo",
             whatsappMessage: "Olá Alex! Vi seu portfólio e gostaria de conversar sobre um projeto.",
         },
         services: {
@@ -348,6 +350,10 @@ export const translations = {
                 demo: "Ver Projeto",
             },
             items: [
+                {
+                    title: "TKZ Jobs Dev",
+                    description: "Plataforma de vagas e oportunidades em tecnologia para desenvolvedores, conectando talentos com empresas através de busca inteligente e filtros avançados."
+                },
                 {
                     title: "CMC Fotos e Artes",
                     description: "E-commerce moderno para venda e personalização de produtos sob demanda, com catálogo interativo e carrinho dinâmico."
@@ -472,7 +478,6 @@ export const translations = {
             description: "Desarrollador Full-Stack enfocado en unir diseño de alto impacto, código de alto rendimiento (.NET & Next.js) y dirección de proyectos de extremo a extremo para maximizar sus resultados.",
             projectsBtn: "Ver proyectos",
             contactBtn: "Hablar conmigo",
-            downloadCv: "Descargar CV",
             whatsappMessage: "¡Hola Alex! Vi tu portafolio y me gustaría hablar sobre un proyecto.",
         },
         services: {
@@ -576,6 +581,10 @@ export const translations = {
                 demo: "Ver Proyecto",
             },
             items: [
+                {
+                    title: "TKZ Jobs Dev",
+                    description: "Plataforma de empleos y oportunidades tecnológicas para desarrolladores, conectando talentos con empresas mediante búsqueda inteligente y filtros avanzados."
+                },
                 {
                     title: "CMC Fotos e Artes",
                     description: "Comercio electrónico moderno para venta y personalización de productos bajo demanda, con catálogo interactivo y carrito dinámico."

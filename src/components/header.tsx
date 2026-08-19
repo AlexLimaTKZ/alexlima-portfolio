@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Button } from "@/components/ui/button"
 import { Menu, Github, Linkedin } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import { SITE_CONFIG } from "@/lib/constants"
 
 export function Header() {
     const { t } = useLanguage()
@@ -16,6 +17,7 @@ export function Header() {
     const [activeSection, setActiveSection] = React.useState("")
     const [isScrolled, setIsScrolled] = React.useState(false)
     const [mounted, setMounted] = React.useState(false)
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
 
     const routes = React.useMemo(() => [
         { href: "#services", label: t.services?.title || "Services" },
@@ -88,7 +90,9 @@ export function Header() {
         <header style={headerStyle}>
             <div className="container flex h-full max-w-screen-2xl items-center mx-auto px-4 md:px-8">
                 <Link href="/" className="mr-6 flex items-center space-x-2 font-bold select-none shrink-0">
-                    <span className="text-lg bg-gradient-to-r from-foreground to-foreground/85 bg-clip-text text-transparent hover:text-cyan-400 transition-colors duration-300">Alex Lima</span>
+                    <span className="text-lg bg-gradient-to-r from-foreground to-foreground/85 bg-clip-text text-transparent hover:text-cyan-400 transition-colors duration-300">
+                        {SITE_CONFIG.name}
+                    </span>
                 </Link>
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                     {routes.map((route) => (
@@ -109,7 +113,7 @@ export function Header() {
                             asChild 
                             className="hidden sm:flex text-foreground/60 hover:text-cyan-400 hover:bg-black/5 dark:hover:bg-white/5 opacity-80 hover:opacity-100 hover:-translate-y-[2px] transition-all duration-300 cursor-pointer h-9 w-9"
                         >
-                            <a href="https://github.com/AlexLimaTKZ" target="_blank" rel="noopener noreferrer">
+                            <a href={SITE_CONFIG.social.github} target="_blank" rel="noopener noreferrer">
                                 <Github className="h-4 w-4" />
                                 <span className="sr-only">GitHub</span>
                             </a>
@@ -120,7 +124,7 @@ export function Header() {
                             asChild 
                             className="hidden sm:flex text-foreground/60 hover:text-cyan-400 hover:bg-black/5 dark:hover:bg-white/5 opacity-80 hover:opacity-100 hover:-translate-y-[2px] transition-all duration-300 mr-1 cursor-pointer h-9 w-9"
                         >
-                            <a href="https://www.linkedin.com/in/alexslima1/" target="_blank" rel="noopener noreferrer">
+                            <a href={SITE_CONFIG.social.linkedin} target="_blank" rel="noopener noreferrer">
                                 <Linkedin className="h-4 w-4" />
                                 <span className="sr-only">LinkedIn</span>
                             </a>
@@ -131,7 +135,7 @@ export function Header() {
                         <div className="opacity-80 hover:opacity-100 hover:-translate-y-[2px] transition-all duration-300">
                             <ModeToggle />
                         </div>
-                        <Sheet>
+                        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" className="md:hidden opacity-80 hover:opacity-100 transition-opacity">
                                     <Menu className="h-5 w-5" />
@@ -163,6 +167,7 @@ export function Header() {
                                         <Link
                                             key={route.href}
                                             href={route.href}
+                                            onClick={() => setMobileMenuOpen(false)}
                                             className={`text-lg font-medium transition-colors hover:text-[#38bdf8] ${activeSection === route.href.substring(1) ? "text-[#38bdf8] font-semibold" : ""}`}
                                         >
                                             {route.label}
@@ -170,7 +175,7 @@ export function Header() {
                                     ))}
                                     <div className="flex items-center gap-4 mt-8 pt-6 border-t border-black/10 dark:border-white/10">
                                         <a 
-                                            href="https://github.com/AlexLimaTKZ" 
+                                            href={SITE_CONFIG.social.github} 
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="text-foreground/60 hover:text-cyan-400 transition-all duration-300 opacity-80 hover:opacity-100 hover:-translate-y-[2px]"
@@ -179,7 +184,7 @@ export function Header() {
                                             <span className="sr-only">GitHub</span>
                                         </a>
                                         <a 
-                                            href="https://www.linkedin.com/in/alexslima1/" 
+                                            href={SITE_CONFIG.social.linkedin} 
                                             target="_blank" 
                                             rel="noopener noreferrer" 
                                             className="text-foreground/60 hover:text-cyan-400 transition-all duration-300 opacity-80 hover:opacity-100 hover:-translate-y-[2px]"
@@ -197,9 +202,3 @@ export function Header() {
         </header>
     )
 }
-
-
-
-
-
-

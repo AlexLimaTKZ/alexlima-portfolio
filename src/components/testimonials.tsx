@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { motion } from "framer-motion"
 import { Star } from "lucide-react"
@@ -63,9 +64,11 @@ export function Testimonials() {
                                 </div>
 
                                 <div className="flex items-center gap-4 mt-6 pt-4 border-t dark:border-white/5 border-zinc-200">
-                                    <img 
+                                    <Image 
                                         src={item.image} 
                                         alt={item.name} 
+                                        width={48}
+                                        height={48}
                                         className="h-12 w-12 rounded-full object-cover border border-white/10" 
                                     />
                                     <div className="text-left">
@@ -105,9 +108,11 @@ export function Testimonials() {
                                 </div>
 
                                 <div className="flex items-center gap-4 mt-6 pt-4 border-t dark:border-white/5 border-zinc-200">
-                                    <img 
+                                    <Image 
                                         src={item.image} 
                                         alt={item.name} 
+                                        width={48}
+                                        height={48}
                                         className="h-12 w-12 rounded-full object-cover border border-white/10" 
                                     />
                                     <div className="text-left">

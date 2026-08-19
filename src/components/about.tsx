@@ -1,18 +1,11 @@
 "use client"
-// UX Bypass: placeholder
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useSpring } from "framer-motion"
+import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/translations"
 import { useRef, useState, useEffect } from "react"
 import { Briefcase, Rocket, Code2, Compass, Palette, Zap } from "lucide-react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-
-// Register GSAP ScrollTrigger safely on the client
-if (typeof window !== "undefined") {
-    gsap.registerPlugin(ScrollTrigger)
-}
 
 // Counter animation hook
 function useCounter(end: number, duration: number = 2000, startCounting: boolean = false) {
@@ -78,42 +71,27 @@ export function About() {
     const statsRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(statsRef, { once: true, margin: "-100px" })
     
-    // GSAP ScrollTrigger refs for the timeline
+    // Timeline scroll progress with pure Framer Motion
     const timelineRef = useRef<HTMLDivElement>(null)
-    const lineProgressRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        if (!lineProgressRef.current || !timelineRef.current) return
-
-        const ctx = gsap.context(() => {
-            gsap.fromTo(
-                lineProgressRef.current,
-                { scaleY: 0 },
-                {
-                    scaleY: 1,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: timelineRef.current,
-                        start: "top 25%",
-                        end: "bottom 75%",
-                        scrub: true,
-                    }
-                }
-            )
-        })
-
-        return () => ctx.revert()
-    }, [])
+    const { scrollYProgress } = useScroll({
+        target: timelineRef,
+        offset: ["start 75%", "end 50%"],
+    })
+    const scaleY = useSpring(scrollYProgress, {
+        stiffness: 120,
+        damping: 25,
+        restDelta: 0.001
+    })
 
     // Process step icons helper
     const processIcons = [Compass, Palette, Code2, Zap]
     
     // Process step images helper (Unsplash corresponding to Discovery, Design, Dev, and Deploy/Optimization)
     const processImages = [
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80", // Descoberta: brainstorming, planejamento, UX wireframes
-        "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=600&q=80", // Design: design system, interfaces, Figma
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80", // Desenvolvimento: código limpo, VS Code, frontend
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"  // Deploy e Otimização: gráficos de performance, velocidade, SEO
+        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
     ]
 
     return (
@@ -204,9 +182,9 @@ export function About() {
 
                         {/* Interactive Vertical Timeline Line */}
                         <div className="absolute left-4 top-24 bottom-4 w-[2px] dark:bg-white/10 bg-black/10 origin-top pointer-events-none">
-                            <div 
-                                ref={lineProgressRef} 
-                                className="w-full h-full bg-gradient-to-b from-cyan-500 to-blue-600 origin-top transform scale-y-0"
+                            <motion.div 
+                                className="w-full h-full bg-gradient-to-b from-cyan-500 to-blue-600 origin-top"
+                                style={{ scaleY }}
                             />
                         </div>
 
@@ -274,10 +252,12 @@ export function About() {
                                     <div>
                                         {/* Banner Image for the card */}
                                         <div className="relative h-32 w-full overflow-hidden rounded-xl mb-6 dark:bg-zinc-900/60 bg-zinc-100 border dark:border-white/10 border-zinc-200/80 ring-1 dark:ring-white/10 ring-zinc-200/50">
-                                            <img
+                                            <Image
                                                 src={processImages[index]}
                                                 alt={step.title}
-                                                className="w-full h-full object-cover rounded-xl brightness-90 dark:brightness-[0.85] group-hover:brightness-[1.1] transition-all duration-500 group-hover:scale-105"
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                                className="object-cover rounded-xl brightness-90 dark:brightness-[0.85] group-hover:brightness-[1.1] transition-all duration-500 group-hover:scale-105"
                                             />
                                         </div>
 
@@ -291,7 +271,7 @@ export function About() {
                                         </div>
 
                                         <h4 className="font-display text-lg font-bold tracking-tight mb-2 text-foreground group-hover:text-blue-400 transition-colors duration-300">
-                                            {step.title}
+                                             {step.title}
                                         </h4>
                                         <p className="text-muted-foreground text-sm leading-relaxed">
                                             {step.description}

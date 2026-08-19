@@ -202,6 +202,13 @@
   animation: marquee-reverse 45s linear infinite;
 }
 
+.marquee-container:hover .animate-marquee,
+.marquee-container:hover .animate-marquee-reverse,
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
 /* Neon Button Styles for Projects */
 .btn-neon {
   position: relative;

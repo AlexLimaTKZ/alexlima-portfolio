@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
-// UX & SEO Bypass: placeholder requestAnimationFrame <title> name="description" og:
 import { Geist, Geist_Mono, Sora, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { SITE_CONFIG, PERSON_SCHEMA } from "@/lib/constants";
+import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
+import { Header } from "@/components/header";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { LenisProvider } from "@/components/lenis-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,18 +32,49 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Lima | Full Stack Developer",
-  description: "Portfolio of Alex Lima (Lider TKZ), a Full Stack Developer specializing in Next.js, TypeScript, and .NET.",
-  keywords: ["Next.js", "React", "Portfolio", "Web Developer", "Alex Lima", "TKZ Dev", "Full Stack"],
-  authors: [{ name: "Alex Lima" }],
-  creator: "Alex Lima",
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
+    template: `%s | ${SITE_CONFIG.name}`,
+  },
+  description: SITE_CONFIG.description,
+  keywords: [...SITE_CONFIG.keywords],
+  authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
+  creator: SITE_CONFIG.name,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE_CONFIG.url,
+    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
+    description: SITE_CONFIG.description,
+    siteName: `${SITE_CONFIG.name} - ${SITE_CONFIG.shortName}`,
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} Portfolio`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_CONFIG.name} | ${SITE_CONFIG.role}`,
+    description: SITE_CONFIG.description,
+    images: [SITE_CONFIG.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
-
-import { ThemeProvider } from "@/components/theme-provider";
-import { LanguageProvider } from "@/components/language-provider";
-import { Header } from "@/components/header";
-import { ScrollProgress } from "@/components/scroll-progress";
-import { LenisProvider } from "@/components/lenis-provider";
 
 export default function RootLayout({
   children,
@@ -46,7 +82,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(PERSON_SCHEMA),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${playfair.variable} antialiased`}
       >

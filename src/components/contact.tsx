@@ -3,13 +3,14 @@
 import { motion } from "framer-motion"
 import { useLanguage } from "@/components/language-provider"
 import { MessageSquare, ArrowRight, Github, Linkedin, Mail } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/constants"
 
 type Language = 'en' | 'pt' | 'es';
 
 export function Contact() {
     const { t, language } = useLanguage()
 
-    const whatsappUrl = `https://wa.me/5586995971050?text=${encodeURIComponent(t.hero.whatsappMessage)}`
+    const whatsappUrl = `https://wa.me/${SITE_CONFIG.contact.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t.hero.whatsappMessage || SITE_CONFIG.contact.whatsappMessage)}`
 
     // Mapeamento dinâmico de headlines em duas linhas por idioma
     const headlineMap = {
@@ -156,7 +157,7 @@ export function Contact() {
                             <div className="flex items-center gap-8">
                                 <div className="flex flex-col items-center gap-2 group/social">
                                     <motion.a
-                                        href="https://github.com/AlexLimaTKZ"
+                                        href={SITE_CONFIG.social.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
@@ -172,7 +173,7 @@ export function Contact() {
 
                                 <div className="flex flex-col items-center gap-2 group/social">
                                     <motion.a
-                                        href="https://www.linkedin.com/in/alexslima1/"
+                                        href={SITE_CONFIG.social.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
@@ -188,7 +189,7 @@ export function Contact() {
 
                                 <div className="flex flex-col items-center gap-2 group/social">
                                     <motion.a
-                                        href="mailto:contato@tkzdev.com"
+                                        href={`mailto:${SITE_CONFIG.contact.email}`}
                                         className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
                                         whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.95 }}
@@ -210,10 +211,10 @@ export function Contact() {
                                     {`// ${language === 'pt' ? "TELEFONE DIRETO" : language === 'es' ? "TELÉFONO DIRECTO" : "DIRECT LINE"}`}
                                 </span>
                                 <a 
-                                    href="tel:+5586995971050" 
+                                    href={`tel:${SITE_CONFIG.contact.phone}`} 
                                     className="text-base font-mono font-bold text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 underline-offset-4 hover:underline transition-colors duration-200 cursor-pointer"
                                 >
-                                    +55 (86) 99597-1050
+                                    {SITE_CONFIG.contact.phoneDisplay}
                                 </a>
                             </div>
                         </div>

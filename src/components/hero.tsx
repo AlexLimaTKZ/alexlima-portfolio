@@ -1,10 +1,12 @@
 "use client"
 
 import React from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion, Variants } from "framer-motion"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import { SITE_CONFIG } from "@/lib/constants"
 
 const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -254,9 +256,8 @@ export function Hero() {
         }
     }, [language])
 
-    const whatsappNumber = "5586995971050"
-    const whatsappMessage = encodeURIComponent(t.hero.whatsappMessage || "Olá Alex! Vi seu portfólio e gostaria de conversar sobre um projeto.")
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+    const whatsappMessage = encodeURIComponent(t.hero.whatsappMessage || SITE_CONFIG.contact.whatsappMessage)
+    const whatsappLink = `https://wa.me/${SITE_CONFIG.contact.phone.replace(/\+/g, '')}?text=${whatsappMessage}`
 
     // Tradução dinâmica dos CTAs personalizados para manter consistência multilíngue
     const primaryCtaText = language === "pt" ? "Iniciar projeto" : language === "es" ? "Iniciar proyecto" : "Start project"
@@ -411,18 +412,25 @@ export function Hero() {
                             {/* Overlay de gradiente ciano sutil misturado */}
                             <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent mix-blend-overlay pointer-events-none z-10 rounded-[20px]" />
                             
-                            <motion.img
-                                src="/alexlima.png"
-                                alt="Alex Lima - Desenvolvedor Full Stack"
-                                className="w-full h-full object-cover object-top filter contrast-[1.1] brightness-[1.05] relative z-0 rounded-[20px]"
-                                style={{
-                                    maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
-                                    WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
-                                }}
+                            <motion.div
+                                className="w-full h-full relative z-0 rounded-[20px] overflow-hidden"
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 1.2, ease: [0.32, 0.72, 0, 1], delay: 0.4 }}
-                            />
+                            >
+                                <Image
+                                    src="/alexlima.png"
+                                    alt="Alex Lima - Desenvolvedor Full Stack"
+                                    fill
+                                    priority
+                                    sizes="(max-width: 768px) 100vw, 420px"
+                                    className="object-cover object-top filter contrast-[1.1] brightness-[1.05] rounded-[20px]"
+                                    style={{
+                                        maskImage: "linear-gradient(to bottom, black 85%, transparent 100%)",
+                                        WebkitMaskImage: "linear-gradient(to bottom, black 85%, transparent 100%)"
+                                    }}
+                                />
+                            </motion.div>
                         </div>
 
                         {/* Cantos decorativos estilo viewfinder */}

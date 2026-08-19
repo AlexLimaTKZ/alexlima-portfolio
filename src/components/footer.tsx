@@ -3,6 +3,7 @@
 import { useLanguage } from "@/components/language-provider"
 import Link from "next/link"
 import { Github, Linkedin, Mail } from "lucide-react"
+import { SITE_CONFIG } from "@/lib/constants"
 
 export function Footer() {
     const { t, language } = useLanguage()
@@ -15,9 +16,9 @@ export function Footer() {
     ]
 
     const socialLinks = [
-        { href: "https://github.com/AlexLimaTKZ", icon: Github, label: "GitHub" },
-        { href: "https://www.linkedin.com/in/alexslima1/", icon: Linkedin, label: "LinkedIn" },
-        { href: "mailto:lider_alex@yahoo.com", icon: Mail, label: "Email" },
+        { href: SITE_CONFIG.social.github, icon: Github, label: "GitHub" },
+        { href: SITE_CONFIG.social.linkedin, icon: Linkedin, label: "LinkedIn" },
+        { href: `mailto:${SITE_CONFIG.contact.email}`, icon: Mail, label: "Email" },
     ]
 
     return (
@@ -27,11 +28,11 @@ export function Footer() {
                     {/* Brand / Coluna Esquerda */}
                     <div className="space-y-4">
                         <span className="font-display text-xl font-bold tracking-tight bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 dark:from-white dark:via-zinc-300 dark:to-zinc-500 bg-clip-text text-transparent block w-fit">
-                            Alex Lima
+                            {SITE_CONFIG.name}
                         </span>
                         <div className="space-y-2">
                             <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-450 leading-none">
-                                Full Stack Developer
+                                {SITE_CONFIG.role}
                             </p>
                             <p className="text-xs text-zinc-400 dark:text-zinc-500 max-w-[280px] leading-relaxed font-sans">
                                 {language === 'pt' && (
@@ -96,7 +97,7 @@ export function Footer() {
                 {/* Bottom bar / Linha Inferior */}
                 <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-sm text-zinc-500 dark:text-zinc-500 font-sans">
-                        © {new Date().getFullYear()} Alex Lima. {t.footer.rights}
+                        © {new Date().getFullYear()} {SITE_CONFIG.name}. {t.footer.rights}
                     </p>
                     <p className="text-sm text-zinc-500 dark:text-zinc-500 font-sans flex items-center gap-1">
                         <span>

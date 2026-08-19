@@ -1,6 +1,6 @@
 "use client"
-// UX Bypass: placeholder
 
+import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { motion } from "framer-motion"
 import { Globe, Sparkles, LayoutDashboard, Code2 } from "lucide-react"
@@ -108,11 +108,13 @@ export function Services() {
                             >
                                 {/* Banner Image with hover zoom, rounded specifically at top */}
                                 <div className="relative h-36 w-full overflow-hidden rounded-t-2xl bg-zinc-150 dark:bg-zinc-900/60 border-b border-zinc-200/50 dark:border-white/5">
-                                    <img
+                                    <Image
                                         src={serviceImages[index]}
                                         alt={service.title}
-                                        className="w-full h-full object-cover opacity-100 dark:opacity-80 group-hover:opacity-100 transition-all duration-500 ease-out group-hover:scale-105 brightness-100 dark:brightness-[0.85] rounded-t-2xl"
-                                        draggable="false"
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                        className="object-cover opacity-100 dark:opacity-80 group-hover:opacity-100 transition-all duration-500 ease-out group-hover:scale-105 brightness-100 dark:brightness-[0.85] rounded-t-2xl"
+                                        draggable={false}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t dark:from-zinc-950/90 dark:via-zinc-950/40 dark:to-transparent from-white/80 via-transparent to-transparent pointer-events-none" />
                                 </div>
