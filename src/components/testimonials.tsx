@@ -10,9 +10,9 @@ export function Testimonials() {
 
     const items = t.testimonials.items || []
     
-    // Separamos os 6 depoimentos originais em 2 grupos de 3, e os duplicamos para criar um loop contínuo e perfeito
-    const row1 = [items[0], items[1], items[2], items[0], items[1], items[2]]
-    const row2 = [items[3], items[4], items[5], items[3], items[4], items[5]]
+    // Distribuímos os 4 depoimentos reais em 2 grupos de 2, duplicando-os para um loop de rolagem contínuo e suave
+    const row1 = items.length >= 2 ? [items[0], items[1], items[0], items[1], items[0], items[1]] : items
+    const row2 = items.length >= 4 ? [items[2], items[3], items[2], items[3], items[2], items[3]] : (items.length >= 2 ? [items[1], items[0], items[1], items[0], items[1], items[0]] : items)
 
     return (
         <section id="testimonials" className="py-24 sm:py-32 dark:bg-zinc-950 bg-zinc-50 relative overflow-hidden">

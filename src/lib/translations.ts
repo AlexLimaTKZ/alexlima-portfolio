@@ -139,49 +139,35 @@ export const translations = {
         },
         testimonials: {
             title: "Client Testimonials",
-            description: "Feedback from businesses and teams who worked with me to build high-performance products.",
+            description: "Real feedback from clients and community members who trust my work to bring their digital products to life.",
             items: [
                 {
-                    name: "Sarah Jenkins",
-                    company: "Apex Retail",
-                    service: "E-Commerce System",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Alex transformed our legacy store into a lightning-fast checkout machine. Our mobile conversion rates shot up by 35% in the first month!"
-                },
-                {
-                    name: "Roberto Silva",
-                    company: "Carvalho Advogados",
-                    service: "Institutional Site",
+                    name: "Veloso",
+                    company: "Se7e Go",
+                    service: "SaaS & Quoting System",
                     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "The SEO architecture Alex built for our firm was top-tier. Within three weeks, we ranked on the first page of Google for Teresina and doubled our consultations."
+                    quote: "The quote and budget management program for Se7eGo is outstanding! It helps me make our quotes and client management far more professional and top quality on a daily basis."
                 },
                 {
-                    name: "Michael Chen",
-                    company: "Innovate SaaS",
-                    service: "Admin Dashboard",
-                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "The dashboard is incredibly fast and intuitive. Our operations team saves hours every single day thanks to the clean UI and efficient C# integrations."
-                },
-                {
-                    name: "Amanda Costa",
+                    name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
-                    service: "Portfolio Platform",
-                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Our dynamic photography portfolio is amazing. High-res files load instantly, and the animations represent the artistic quality of our work."
+                    service: "E-Commerce & Catalog",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "I loved the look and feel of my page! Beyond looking amazing and fast, now I have a powerful and highly effective tool to capture new clients and close sales."
                 },
                 {
-                    name: "David Miller",
-                    company: "DevLaunch Inc",
-                    service: "Tech Mentorship",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Having Alex review our code and architect our Git workflow was game-changing. The TKZ Dev guidance leveled up our junior team in record time."
+                    name: "Dra. Adriana Carvalho",
+                    company: "Adriana Carvalho Advocacia",
+                    service: "Institutional Site & SEO",
+                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "I absolutely loved our new law firm website! The previous site done by another developer was frustrating, but Alex exceeded all expectations. I proudly show my page whenever I can and recommend him to everyone."
                 },
                 {
-                    name: "Sofia Rodríguez",
-                    company: "Vortex Marketing",
-                    service: "Landing Page",
-                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "The LP copy and animations fit our brand perfectly. It loaded in 0.4s and delivered a 22% conversion rate during our product launch!"
+                    name: "Lucas Mendes",
+                    company: "Comunidade TKZ Dev",
+                    service: "TKZ Jobs Dev Platform",
+                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "The TKZ Jobs Dev project made a huge difference for our community. Developers looking for tech opportunities now have a streamlined place to find relevant jobs with much more ease and practicality."
                 }
             ]
         },
@@ -370,49 +356,35 @@ export const translations = {
         },
         testimonials: {
             title: "Depoimentos de Impacto",
-            description: "O que dizem os clientes e parceiros que confiaram no meu trabalho para tirar seus produtos digitais do papel.",
+            description: "O que dizem os clientes e membros da comunidade que confiaram no meu trabalho para tirar seus produtos digitais do papel.",
             items: [
                 {
-                    name: "Sarah Jenkins",
-                    company: "Apex Retail",
-                    service: "E-Commerce",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Alex transformou nossa loja legada em uma máquina de checkout ultrarrápida. Nossa conversão mobile aumentou em 35% no primeiro mês!"
-                },
-                {
-                    name: "Roberto Silva",
-                    company: "Carvalho Advogados",
-                    service: "Site Institucional",
+                    name: "Veloso",
+                    company: "Se7e Go",
+                    service: "Software SaaS & Gestão",
                     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "A arquitetura de SEO que o Alex construiu para o nosso escritório foi excepcional. Em três semanas, já estávamos na primeira página do Google."
+                    quote: "O programa de gestão de orçamentos da Se7eGo é muito bom! Ele me ajuda a deixar os orçamentos e a gestão de clientes com muito mais profissionalismo e qualidade no dia a dia."
                 },
                 {
-                    name: "Michael Chen",
-                    company: "Innovate SaaS",
-                    service: "Dashboard Administrativo",
-                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "O painel é extremamente rápido e intuitivo. Nossa equipe de operações economiza horas diariamente graças à interface limpa e integrações em C#."
-                },
-                {
-                    name: "Amanda Costa",
+                    name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
-                    service: "Plataforma Portfolio",
-                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Nosso portfólio dinâmico de fotografia ficou incrível. Arquivos de alta resolução carregam instantaneamente e as animações dão um ar super artístico."
+                    service: "E-Commerce & Catálogo",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Amei o visual da minha página! Além de linda e rápida, agora tenho uma ferramenta a mais e muito eficiente para captar novos clientes e fechar vendas."
                 },
                 {
-                    name: "David Miller",
-                    company: "DevLaunch Inc",
-                    service: "Mentoria Técnica",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Ter o Alex revisando nosso código e organizando nosso fluxo Git foi um divisor de águas. O suporte do TKZ Dev acelerou muito a evolução do time."
+                    name: "Dra. Adriana Carvalho",
+                    company: "Adriana Carvalho Advocacia",
+                    service: "Site Institucional & SEO",
+                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "Amei a nova página do escritório! O site anterior feito por outro desenvolvedor não tinha ficado legal, mas agora mostro sempre que posso o site e indico o trabalho do Alex para todo mundo."
                 },
                 {
-                    name: "Sofia Rodríguez",
-                    company: "Vortex Marketing",
-                    service: "Landing Page",
-                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "A copy e as animações da LP encaixaram perfeitamente no nosso branding. Carregou em 0.4s e entregou 22% de conversão no lançamento!"
+                    name: "Lucas Mendes",
+                    company: "Comunidade TKZ Dev",
+                    service: "Plataforma TKZ Jobs Dev",
+                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "O projeto do TKZ Jobs Dev ajudou muito a nossa comunidade. Quem procura emprego na área de tecnologia agora tem um lugar para achar vagas com muito mais facilidade e praticidade."
                 }
             ]
         },
@@ -601,49 +573,35 @@ export const translations = {
         },
         testimonials: {
             title: "Testimonios de Impacto",
-            description: "Lo que dicen los clientes y socios que confiaron en mi trabajo para desarrollar sus productos digitales.",
+            description: "Lo que dicen los clientes y miembros de la comunidad que confiaron en mi trabajo para desarrollar sus productos digitales.",
             items: [
                 {
-                    name: "Sarah Jenkins",
-                    company: "Apex Retail",
-                    service: "E-Commerce",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Alex transformó nuestra tienda heredada en una pago pago ultrarrápida. ¡Nuestra conversión móvil aumentó un 35% en el primer mes!"
-                },
-                {
-                    name: "Roberto Silva",
-                    company: "Carvalho Abogados",
-                    service: "Sitio Institucional",
+                    name: "Veloso",
+                    company: "Se7e Go",
+                    service: "Software SaaS y Gestión",
                     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "La estructura de SEO que Alex creó para nuestra firma fue excepcional. En tres semanas, ya estábamos posicionados en la primera página de Google."
+                    quote: "¡El programa de gestión de presupuestos de Se7eGo es excelente! Me ayuda a presentar presupuestos y gestionar clientes con mucho más profesionalismo y calidad."
                 },
                 {
-                    name: "Michael Chen",
-                    company: "Innovate SaaS",
-                    service: "Panel Administrativo",
-                    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "El panel es sumamente rápido e intuitivo. Nuestro equipo operativo ahorra horas todos los días gracias al diseño limpio y integraciones en C#."
-                },
-                {
-                    name: "Amanda Costa",
+                    name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
-                    service: "Plataforma de Portafolio",
-                    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Nuestro portafolio dinámico de fotografía quedó increíble. Las imágenes de alta resolución cargan al instante y las animaciones dan un toque muy artístico."
+                    service: "E-Commerce y Catálogo",
+                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "¡Me encantó el diseño de mi página! Además de hermosa y rápida, ahora tengo una herramienta muy eficiente para captar nuevos clientes."
                 },
                 {
-                    name: "David Miller",
-                    company: "DevLaunch Inc",
-                    service: "Mentoría Técnica",
-                    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "Contar con Alex para revisar nuestro código y organizar el flujo Git fue un punto de inflexión. El soporte de TKZ Dev aceleró la evolución de los juniors."
+                    name: "Dra. Adriana Carvalho",
+                    company: "Adriana Carvalho Abogacía",
+                    service: "Sitio Web Institucional y SEO",
+                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "¡Me encantó la nueva página de la firma! El sitio anterior hecho por otro desarrollador no había quedado bien, pero ahora muestro siempre que puedo mi web y recomiendo a Alex."
                 },
                 {
-                    name: "Sofia Rodríguez",
-                    company: "Vortex Marketing",
-                    service: "Landing Page",
-                    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80",
-                    quote: "La redacción y las animaciones de la LP encajaron perfecto con nuestra marca. ¡Cargó en 0.4s y logramos un 22% de tasa de conversión!"
+                    name: "Lucas Mendes",
+                    company: "Comunidad TKZ Dev",
+                    service: "Plataforma TKZ Jobs Dev",
+                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
+                    quote: "El proyecto TKZ Jobs Dev ayudó muchísimo a nuestra comunidad. Quienes buscan trabajo en tecnología ahora tienen un lugar para encontrar vacantes con mucha más facilidad y practicidad."
                 }
             ]
         },
