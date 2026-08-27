@@ -53,7 +53,7 @@ const PROJECTS_DATA = [
         category: "sistemas",
         tags: ["Next.js", "React", "Tailwind CSS", "Dashboard", "SaaS"],
         github: "",
-        demo: "https://se7e-go.vercel.app/login",
+        demo: "https://www.se7ealuminio.com.br/go",
         glowClass: "bg-cyan-500/10",
         image: "/se7ego.png",
         year: "2026",
