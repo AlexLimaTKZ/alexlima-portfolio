@@ -134,7 +134,9 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
 
             <CardHeader className="space-y-2 relative z-20 p-6 sm:p-8">
                 <CardTitle className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-white subpixel-antialiased">
+                    <h3>
                     {project.title}
+                    </h3>
                 </CardTitle>
                 <CardDescription className={`text-sm sm:text-base line-clamp-3 leading-relaxed transition-colors duration-300 subpixel-antialiased ${
                     isActive ? "text-zinc-800 dark:text-zinc-100 font-semibold" : "text-zinc-500 dark:text-zinc-300"
@@ -150,7 +152,7 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
                             className={`font-bold border transition-all duration-200 cursor-default subpixel-antialiased ${
                                 isActive
                                     ? "dark:border-cyan-500/30 border-cyan-200 dark:bg-cyan-950/40 bg-cyan-50/70 dark:text-cyan-200 text-cyan-700 hover:border-cyan-500/40 dark:hover:bg-cyan-950/60 hover:bg-cyan-100/50"
-                                    : "dark:border-white/10 border-zinc-200 dark:bg-white/5 bg-zinc-100/50 dark:text-zinc-300 text-zinc-650 hover:border-white/20 dark:hover:bg-white/10 hover:bg-zinc-100"
+                                    : "dark:border-white/10 border-zinc-200 dark:bg-white/5 bg-zinc-100/50 dark:text-zinc-300 text-zinc-600 hover:border-white/20 dark:hover:bg-white/10 hover:bg-zinc-100"
                             }`}
                         >
                             {tag}
@@ -169,7 +171,13 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
                             <Button variant="outline" size="sm" asChild className={`w-full rounded-xl border-zinc-200 dark:border-white/10 hover:bg-zinc-50 dark:hover:bg-white/5 cursor-pointer py-5 transition-all duration-200 ${
                                 isActive ? "text-zinc-700 dark:text-zinc-200 hover:text-zinc-900 dark:hover:text-white" : "text-zinc-400"
                             }`}>
-                                <Link href={project.github} target="_blank">
+                                <Link
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    tabIndex={isActive ? 0 : -1}
+                                    aria-label={`${codeLabel}: ${project.title}`}
+                                >
                                     <Github className="mr-2 h-4 w-4" /> {codeLabel}
                                 </Link>
                             </Button>
@@ -178,6 +186,9 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
                             <Link 
                                 href={project.demo} 
                                 target="_blank" 
+                                rel="noopener noreferrer"
+                                tabIndex={isActive ? 0 : -1}
+                                aria-label={`${demoLabel}: ${project.title}`}
                                 className="w-full flex items-center justify-center py-[13px] px-9 rounded-[14px] text-[15px] font-semibold tracking-[0.3px] border cursor-pointer transition-all duration-300 bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-500 shadow-[0_4px_12px_rgba(6,182,212,0.15)] dark:bg-cyan-950/20 dark:hover:bg-cyan-950/40 dark:text-cyan-400 dark:border-cyan-500/50 dark:shadow-[0_0_20px_rgba(6,182,212,0.1)] hover:-translate-y-[2px] active:scale-[0.98] select-none text-center"
                             >
                                 <span>{demoLabel}</span>
@@ -189,6 +200,9 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
                         <Link 
                             href={project.demo} 
                             target="_blank" 
+                            rel="noopener noreferrer"
+                            tabIndex={isActive ? 0 : -1}
+                            aria-label={`${demoLabel}: ${project.title}`}
                             className="w-full flex items-center justify-center py-[13px] px-9 rounded-[14px] text-[15px] font-semibold tracking-[0.3px] border cursor-pointer transition-all duration-300 bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-500 shadow-[0_4px_12px_rgba(6,182,212,0.15)] dark:bg-cyan-950/20 dark:hover:bg-cyan-950/40 dark:text-cyan-400 dark:border-cyan-500/50 dark:shadow-[0_0_20px_rgba(6,182,212,0.1)] hover:-translate-y-[2px] active:scale-[0.98] select-none text-center"
                         >
                             <span>{demoLabel}</span>
@@ -203,7 +217,7 @@ const ProjectCard = React.memo(({ project, mock, codeLabel, demoLabel, isActive 
 ProjectCard.displayName = "ProjectCard"
 
 export function Projects() {
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
     const [currentIndex, setCurrentIndex] = useState(0)
     const [windowWidth, setWindowWidth] = useState(1200)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -235,14 +249,6 @@ export function Projects() {
     const prevSlide = useCallback(() => {
         setCurrentIndex((prev) => (prev - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length)
     }, [])
-
-    // Autoplay deslizante
-    useEffect(() => {
-        const timer = setInterval(() => {
-            nextSlide()
-        }, 6500)
-        return () => clearInterval(timer)
-    }, [nextSlide])
 
     // Captura de gestos (Swipe) sem conflito de cliques
     const handleTouchStart = (e: React.TouchEvent) => {
@@ -301,10 +307,20 @@ export function Projects() {
         }
     }
 
+    const carouselLabel = language === "pt" ? "Projetos em destaque" : language === "es" ? "Proyectos destacados" : "Featured projects"
+    const previousLabel = language === "pt" ? "Projeto anterior" : language === "es" ? "Proyecto anterior" : "Previous project"
+    const nextLabel = language === "pt" ? "Próximo projeto" : language === "es" ? "Siguiente proyecto" : "Next project"
+    const slideLabel = (index: number) => language === "pt"
+        ? `Ir para o projeto ${index + 1} de ${projectsList.length}`
+        : language === "es"
+            ? `Ir al proyecto ${index + 1} de ${projectsList.length}`
+            : `Go to project ${index + 1} of ${projectsList.length}`
+
     return (
         <motion.section 
             id="projects" 
             ref={containerRef} 
+            aria-labelledby="projects-title"
             className="container py-24 sm:py-32 mx-auto px-4 md:px-8 relative overflow-hidden"
             initial={{ y: 60, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -335,32 +351,40 @@ export function Projects() {
                 <span className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.25em] uppercase font-mono block">
                     {`// ${t.projects.title === "Projetos em Destaque" ? "Portfólio" : "Portfolio"}`}
                 </span>
-                <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-foreground">
+                <h2 id="projects-title" className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-foreground">
                     {t.projects.title}
                 </h2>
             </motion.div>
 
             {/* Viewport 3D Coverflow Container */}
-            <div className="relative max-w-4xl mx-auto w-full z-10 px-4 sm:px-0">
+            <div
+                className="relative max-w-4xl mx-auto w-full z-10 px-4 sm:px-0"
+                role="region"
+                aria-roledescription="carousel"
+                aria-label={carouselLabel}
+            >
                 
                 {/* Navegação por Setas */}
                 <button
                     onClick={prevSlide}
                     className="absolute left-[-10px] sm:left-[-50px] md:left-[-80px] top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-12 md:w-12 rounded-full border dark:border-white/10 border-zinc-300 dark:bg-zinc-950/70 bg-white/80 backdrop-blur-md flex items-center justify-center dark:text-zinc-400 text-zinc-500 hover:text-foreground dark:hover:border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300 shadow-lg cursor-pointer hover:scale-110 active:scale-95"
-                    aria-label="Previous Project"
+                    aria-label={previousLabel}
+                    aria-controls="projects-carousel-track"
                 >
                     <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
                 <button
                     onClick={nextSlide}
                     className="absolute right-[-10px] sm:right-[-50px] md:right-[-80px] top-1/2 -translate-y-1/2 z-40 h-10 w-10 md:h-12 md:w-12 rounded-full border dark:border-white/10 border-zinc-300 dark:bg-zinc-950/70 bg-white/80 backdrop-blur-md flex items-center justify-center dark:text-zinc-400 text-zinc-500 hover:text-foreground dark:hover:border-cyan-500/30 hover:border-cyan-400/50 transition-all duration-300 shadow-lg cursor-pointer hover:scale-110 active:scale-95"
-                    aria-label="Next Project"
+                    aria-label={nextLabel}
+                    aria-controls="projects-carousel-track"
                 >
                     <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                 </button>
 
                 {/* Track Tridimensional dos Cards (Aumentado a altura para evitar sobreposição dos dots) */}
                 <div 
+                    id="projects-carousel-track"
                     className="relative w-full h-[460px] sm:h-[540px] md:h-[600px] flex items-center justify-center overflow-visible mt-20"
                     style={{ perspective: "1200px" }}
                     onTouchStart={handleTouchStart}
@@ -374,6 +398,10 @@ export function Projects() {
                         return (
                             <motion.div
                                 key={project.id}
+                                role="group"
+                                aria-roledescription="slide"
+                                aria-label={`${idx + 1} / ${projectsList.length}: ${project.title}`}
+                                aria-hidden={relativePos !== 0}
                                 className={`absolute w-full max-w-[270px] sm:max-w-[380px] md:max-w-[500px] will-change-transform ${
                                     relativePos !== 0 ? "cursor-pointer" : ""
                                 }`}
@@ -404,13 +432,16 @@ export function Projects() {
                         <button
                             key={idx}
                             onClick={() => setCurrentIndex(idx)}
-                            className={`h-[9px] w-[9px] rounded-full transition-all duration-300 cursor-pointer ${
-                                currentIndex === idx 
-                                    ? "bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)] scale-110" 
-                                    : "bg-zinc-300 dark:bg-white/20 hover:bg-zinc-400 dark:hover:bg-white/40"
-                            }`}
-                            aria-label={`Go to slide ${idx + 1}`}
-                        />
+                            className="group h-8 w-8 rounded-full flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
+                            aria-label={slideLabel(idx)}
+                            aria-current={currentIndex === idx ? "true" : undefined}
+                        >
+                            <span className={`h-[9px] w-[9px] rounded-full transition-all duration-300 ${
+                                currentIndex === idx
+                                    ? "bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.6)] scale-110"
+                                    : "bg-zinc-300 dark:bg-white/20 group-hover:bg-zinc-400 dark:group-hover:bg-white/40"
+                            }`} />
+                        </button>
                     ))}
                 </div>
             </div>

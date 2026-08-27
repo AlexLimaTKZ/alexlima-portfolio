@@ -37,6 +37,13 @@ export function Contact() {
         es: "Hablar por WhatsApp"
     }
     const currentCtaText = ctaTextMap[language as Language] || ctaTextMap.en
+    const githubLabel = language === 'pt' ? "GitHub de Alex Lima" : language === 'es' ? "GitHub de Alex Lima" : "Alex Lima on GitHub"
+    const linkedinLabel = language === 'pt' ? "LinkedIn de Alex Lima" : language === 'es' ? "LinkedIn de Alex Lima" : "Alex Lima on LinkedIn"
+    const emailLabel = language === 'pt'
+        ? `Enviar e-mail para ${SITE_CONFIG.contact.email}`
+        : language === 'es'
+            ? `Enviar correo a ${SITE_CONFIG.contact.email}`
+            : `Email ${SITE_CONFIG.contact.email}`
 
     return (
         <section id="contact" className="w-full min-h-[85vh] flex items-center justify-start relative overflow-hidden py-24 sm:py-32 bg-[#f8f9fa] dark:bg-transparent transition-colors duration-300">
@@ -115,7 +122,7 @@ export function Contact() {
                                 {currentHeadline.line2}
                             </span>
                         </h2>
-                        <p className="text-zinc-650 dark:text-zinc-400 text-lg sm:text-xl max-w-2xl leading-relaxed pt-2 font-sans">
+                        <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl max-w-2xl leading-relaxed pt-2 font-sans">
                             {t.footer.ctaDescription || t.contact.description}
                         </p>
                     </div>
@@ -160,7 +167,8 @@ export function Contact() {
                                         href={SITE_CONFIG.social.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
+                                        aria-label={githubLabel}
+                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
                                         whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
@@ -176,7 +184,8 @@ export function Contact() {
                                         href={SITE_CONFIG.social.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
+                                        aria-label={linkedinLabel}
+                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
                                         whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.95 }}
                                     >
@@ -190,7 +199,8 @@ export function Contact() {
                                 <div className="flex flex-col items-center gap-2 group/social">
                                     <motion.a
                                         href={`mailto:${SITE_CONFIG.contact.email}`}
-                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md"
+                                        aria-label={emailLabel}
+                                        className="h-12 w-12 rounded-full border border-zinc-200 dark:border-white/10 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:scale-110 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
                                         whileHover={{ y: -4 }}
                                         whileTap={{ scale: 0.95 }}
                                     >

@@ -11,7 +11,7 @@ import { SectionDivider } from "@/components/section-divider";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between w-full overflow-x-hidden">
+    <main id="main-content" tabIndex={-1} className="flex min-h-screen flex-col items-center justify-between w-full overflow-x-hidden">
       <Hero />
       <SectionDivider variant="gradient" />
       <Services />

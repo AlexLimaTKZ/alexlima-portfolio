@@ -31,7 +31,7 @@ export function Footer() {
                             {SITE_CONFIG.name}
                         </span>
                         <div className="space-y-2">
-                            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-450 leading-none">
+                            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 leading-none">
                                 {SITE_CONFIG.role}
                             </p>
                             <p className="text-xs text-zinc-400 dark:text-zinc-500 max-w-[280px] leading-relaxed font-sans">
@@ -50,9 +50,9 @@ export function Footer() {
 
                     {/* Navigation / Coluna do Meio */}
                     <div className="space-y-4">
-                        <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 mb-5 font-mono">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 mb-5 font-mono">
                             {t.footer.navTitle || "Navegação"}
-                        </h4>
+                        </h2>
                         <nav className="flex flex-col gap-3.5">
                             {navLinks.map((link) => (
                                 <Link 
@@ -68,9 +68,9 @@ export function Footer() {
 
                     {/* Social / Coluna da Direita */}
                     <div className="space-y-4">
-                        <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 mb-5 font-mono">
+                        <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400 dark:text-zinc-500 mb-5 font-mono">
                             {t.footer.socialTitle || "Social"}
-                        </h4>
+                        </h2>
                         <div className="flex gap-6">
                             {socialLinks.map((link) => {
                                 const Icon = link.icon
@@ -79,6 +79,7 @@ export function Footer() {
                                         <Link
                                             href={link.href}
                                             target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                                            rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                                             className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 dark:border-white/5 bg-white dark:bg-white/5 text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-500/10 dark:hover:bg-cyan-500/20 hover:border-cyan-200/50 dark:hover:border-cyan-500/20 transition-all duration-300 shadow-sm hover:shadow cursor-pointer"
                                         >
                                             <Icon className="h-4.5 w-4.5" />

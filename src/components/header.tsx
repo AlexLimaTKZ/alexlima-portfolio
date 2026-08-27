@@ -12,12 +12,15 @@ import { useLanguage } from "@/components/language-provider"
 import { SITE_CONFIG } from "@/lib/constants"
 
 export function Header() {
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
     const { resolvedTheme } = useTheme()
     const [activeSection, setActiveSection] = React.useState("")
     const [isScrolled, setIsScrolled] = React.useState(false)
     const [mounted, setMounted] = React.useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+
+    const menuLabel = language === "pt" ? "Abrir menu" : language === "es" ? "Abrir menú" : "Open menu"
+    const mobileMenuTitle = language === "pt" ? "Menu principal" : language === "es" ? "Menú principal" : "Main menu"
 
     const routes = React.useMemo(() => [
         { href: "#services", label: t.services?.title || "Services" },
@@ -139,7 +142,7 @@ export function Header() {
                             <SheetTrigger asChild>
                                 <Button variant="ghost" size="icon" className="md:hidden opacity-80 hover:opacity-100 transition-opacity">
                                     <Menu className="h-5 w-5" />
-                                    <span className="sr-only">Toggle Menu</span>
+                                    <span className="sr-only">{menuLabel}</span>
                                 </Button>
                             </SheetTrigger>
                             <SheetContent 
@@ -161,7 +164,7 @@ export function Header() {
                                             : '0 12px 40px rgba(0, 0, 0, 0.15)'),
                                 }}
                             >
-                                <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                                <SheetTitle className="sr-only">{mobileMenuTitle}</SheetTitle>
                                 <div className="flex flex-col gap-4 mt-8">
                                     {routes.map((route) => (
                                         <Link

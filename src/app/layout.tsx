@@ -45,6 +45,12 @@ export const metadata: Metadata = {
   keywords: [...SITE_CONFIG.keywords],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
+  category: "technology",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -106,6 +112,12 @@ export default function RootLayout({
         >
           <LenisProvider>
             <LanguageProvider>
+              <a
+                href="#main-content"
+                className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-cyan-600 px-4 py-3 font-semibold text-white shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2"
+              >
+                Pular para o conteúdo principal
+              </a>
               <ScrollProgress />
               <Header />
               {children}

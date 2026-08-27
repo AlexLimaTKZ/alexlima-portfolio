@@ -1,9 +1,9 @@
 "use client"
 
 import { motion, useInView, useScroll, useSpring } from "framer-motion"
-import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/translations"
+import { SITE_CONFIG } from "@/lib/constants"
 import { useRef, useState, useEffect } from "react"
 import { Briefcase, Rocket, Code2, Compass, Palette, Zap } from "lucide-react"
 
@@ -61,9 +61,9 @@ const timelineItemVariants = {
 }
 
 const stats = [
-    { value: 3, suffix: "+", icon: Briefcase, labelKey: "statsYears" },
-    { value: 15, suffix: "+", icon: Rocket, labelKey: "statsProjects" },
-    { value: 10, suffix: "+", icon: Code2, labelKey: "statsTechs" },
+    { value: SITE_CONFIG.stats.yearsExperience, suffix: "+", icon: Briefcase, labelKey: "statsYears" },
+    { value: SITE_CONFIG.stats.projectsDelivered, suffix: "+", icon: Rocket, labelKey: "statsProjects" },
+    { value: SITE_CONFIG.stats.technologies, suffix: "+", icon: Code2, labelKey: "statsTechs" },
 ]
 
 export function About() {
@@ -86,12 +86,11 @@ export function About() {
     // Process step icons helper
     const processIcons = [Compass, Palette, Code2, Zap]
     
-    // Process step images helper (Unsplash corresponding to Discovery, Design, Dev, and Deploy/Optimization)
-    const processImages = [
-        "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+    const processBannerColors = [
+        "from-cyan-500/20 via-blue-500/10 to-transparent text-cyan-400",
+        "from-violet-500/20 via-fuchsia-500/10 to-transparent text-violet-400",
+        "from-blue-500/20 via-indigo-500/10 to-transparent text-blue-400",
+        "from-emerald-500/20 via-cyan-500/10 to-transparent text-emerald-400",
     ]
 
     return (
@@ -154,7 +153,7 @@ export function About() {
                             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="space-y-4 dark:text-zinc-300 text-zinc-650 text-base leading-relaxed max-w-prose"
+                            className="space-y-4 text-zinc-600 dark:text-zinc-300 text-base leading-relaxed max-w-prose"
                         >
                             <p>{t.about.description1}</p>
                             <p>{t.about.description2}</p>
@@ -250,15 +249,17 @@ export function About() {
                                     <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-600/0 via-blue-500/0 to-emerald-500/0 group-hover:from-blue-600 group-hover:via-blue-500 group-hover:to-emerald-500 transition-all duration-700" />
                                     
                                     <div>
-                                        {/* Banner Image for the card */}
-                                        <div className="relative h-32 w-full overflow-hidden rounded-xl mb-6 dark:bg-zinc-900/60 bg-zinc-100 border dark:border-white/10 border-zinc-200/80 ring-1 dark:ring-white/10 ring-zinc-200/50">
-                                            <Image
-                                                src={processImages[index]}
-                                                alt={step.title}
-                                                fill
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                                className="object-cover rounded-xl brightness-90 dark:brightness-[0.85] group-hover:brightness-[1.1] transition-all duration-500 group-hover:scale-105"
+                                        {/* Painel gráfico local, sem dependência de imagens externas. */}
+                                        <div className={`relative h-32 w-full overflow-hidden rounded-xl mb-6 bg-gradient-to-br ${processBannerColors[index]} border dark:border-white/10 border-zinc-200/80 ring-1 dark:ring-white/10 ring-zinc-200/50 flex items-center justify-center`}>
+                                            <div
+                                                aria-hidden="true"
+                                                className="absolute inset-0 opacity-20"
+                                                style={{
+                                                    backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+                                                    backgroundSize: "18px 18px",
+                                                }}
                                             />
+                                            <Icon aria-hidden="true" className="h-14 w-14 opacity-60 transition-transform duration-500 group-hover:scale-110" strokeWidth={1.25} />
                                         </div>
 
                                         <div className="flex items-center justify-between mb-6">
@@ -332,9 +333,9 @@ function TimelineItem({ exp, index }: { exp: { year: string; title: string; comp
                         {exp.company}
                     </span>
                 </div>
-                <h4 className="font-display text-lg font-bold tracking-tight text-foreground">
+                <h3 className="font-display text-lg font-bold tracking-tight text-foreground">
                     {exp.title}
-                </h4>
+                </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                     {exp.description}
                 </p>

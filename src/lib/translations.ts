@@ -145,28 +145,24 @@ export const translations = {
                     name: "Veloso",
                     company: "Se7e Go",
                     service: "SaaS & Quoting System",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "The quote and budget management program for Se7eGo is outstanding! It helps me make our quotes and client management far more professional and top quality on a daily basis."
                 },
                 {
                     name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
                     service: "E-Commerce & Catalog",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "I loved the look and feel of my page! Beyond looking amazing and fast, now I have a powerful and highly effective tool to capture new clients and close sales."
                 },
                 {
                     name: "Dra. Adriana Carvalho",
                     company: "Adriana Carvalho Advocacia",
                     service: "Institutional Site & SEO",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "I absolutely loved our new law firm website! The previous site done by another developer was frustrating, but Alex exceeded all expectations. I proudly show my page whenever I can and recommend him to everyone."
                 },
                 {
                     name: "Lucas Mendes",
                     company: "Comunidade TKZ Dev",
                     service: "TKZ Jobs Dev Platform",
-                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "The TKZ Jobs Dev project made a huge difference for our community. Developers looking for tech opportunities now have a streamlined place to find relevant jobs with much more ease and practicality."
                 }
             ]
@@ -362,28 +358,24 @@ export const translations = {
                     name: "Veloso",
                     company: "Se7e Go",
                     service: "Software SaaS & Gestão",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "O programa de gestão de orçamentos da Se7eGo é muito bom! Ele me ajuda a deixar os orçamentos e a gestão de clientes com muito mais profissionalismo e qualidade no dia a dia."
                 },
                 {
                     name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
                     service: "E-Commerce & Catálogo",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "Amei o visual da minha página! Além de linda e rápida, agora tenho uma ferramenta a mais e muito eficiente para captar novos clientes e fechar vendas."
                 },
                 {
                     name: "Dra. Adriana Carvalho",
                     company: "Adriana Carvalho Advocacia",
                     service: "Site Institucional & SEO",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "Amei a nova página do escritório! O site anterior feito por outro desenvolvedor não tinha ficado legal, mas agora mostro sempre que posso o site e indico o trabalho do Alex para todo mundo."
                 },
                 {
                     name: "Lucas Mendes",
                     company: "Comunidade TKZ Dev",
                     service: "Plataforma TKZ Jobs Dev",
-                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "O projeto do TKZ Jobs Dev ajudou muito a nossa comunidade. Quem procura emprego na área de tecnologia agora tem um lugar para achar vagas com muito mais facilidade e praticidade."
                 }
             ]
@@ -579,28 +571,24 @@ export const translations = {
                     name: "Veloso",
                     company: "Se7e Go",
                     service: "Software SaaS y Gestión",
-                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "¡El programa de gestión de presupuestos de Se7eGo es excelente! Me ayuda a presentar presupuestos y gestionar clientes con mucho más profesionalismo y calidad."
                 },
                 {
                     name: "Tamires Sthefany",
                     company: "CMC Fotos e Artes",
                     service: "E-Commerce y Catálogo",
-                    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "¡Me encantó el diseño de mi página! Además de hermosa y rápida, ahora tengo una herramienta muy eficiente para captar nuevos clientes."
                 },
                 {
                     name: "Dra. Adriana Carvalho",
                     company: "Adriana Carvalho Abogacía",
                     service: "Sitio Web Institucional y SEO",
-                    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "¡Me encantó la nueva página de la firma! El sitio anterior hecho por otro desarrollador no había quedado bien, pero ahora muestro siempre que puedo mi web y recomiendo a Alex."
                 },
                 {
                     name: "Lucas Mendes",
                     company: "Comunidad TKZ Dev",
                     service: "Plataforma TKZ Jobs Dev",
-                    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80",
                     quote: "El proyecto TKZ Jobs Dev ayudó muchísimo a nuestra comunidad. Quienes buscan trabajo en tecnología ahora tienen un lugar para encontrar vacantes con mucha más facilidad y practicidad."
                 }
             ]

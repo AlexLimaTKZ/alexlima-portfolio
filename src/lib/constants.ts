@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
     shortName: "TKZ Dev",
     url: "https://alexlima-portfolio.vercel.app",
     ogImage: "/opengraph-image.png",
-    description: "Portfolio de Alex Lima (Lider TKZ), Desenvolvedor Full Stack especializado em Next.js, TypeScript e .NET.",
+    description: "Portfólio de Alex Lima (Líder TKZ), desenvolvedor Full Stack especializado em Next.js, TypeScript e .NET.",
     keywords: [
         "Alex Lima",
         "Full Stack Developer",
@@ -20,6 +20,11 @@ export const SITE_CONFIG = {
         "Frontend",
         "Backend"
     ],
+    stats: {
+        yearsExperience: 3,
+        projectsDelivered: 15,
+        technologies: 10,
+    },
     contact: {
         email: "contato@tkzdev.com",
         phone: "+5586995971050",
@@ -37,7 +42,7 @@ export const PERSON_SCHEMA = {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Alex Lima",
-    "alternateName": "Lider TKZ",
+    "alternateName": "Líder TKZ",
     "url": SITE_CONFIG.url,
     "image": `${SITE_CONFIG.url}/alexlima.png`,
     "jobTitle": "Full Stack Developer",

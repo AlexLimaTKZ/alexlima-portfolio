@@ -1,14 +1,10 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import Lenis from "lenis"
 import "lenis/dist/lenis.css"
 
-const LenisContext = createContext<Lenis | null>(null)
-
 export function LenisProvider({ children }: { children: React.ReactNode }) {
-    const [lenis, setLenis] = useState<Lenis | null>(null)
-
     useEffect(() => {
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
         const coarsePointer = window.matchMedia("(pointer: coarse)")
@@ -31,8 +27,6 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
             autoRaf: true,
         })
 
-        setLenis(lenisInstance)
-
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 lenisInstance.stop()
@@ -46,15 +40,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
         return () => {
             document.removeEventListener("visibilitychange", handleVisibilityChange)
             lenisInstance.destroy()
-            setLenis(null)
         }
     }, [])
 
-    return (
-        <LenisContext.Provider value={lenis}>
-            {children}
-        </LenisContext.Provider>
-    )
+    return <>{children}</>
 }
-
-export const useLenis = () => useContext(LenisContext)

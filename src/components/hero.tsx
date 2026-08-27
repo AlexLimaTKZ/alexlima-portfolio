@@ -71,12 +71,17 @@ export function Hero() {
         const spotlight = spotlightRef.current
         if (!section || !spotlight) return
 
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+        const finePointer = window.matchMedia("(pointer: fine)")
+        if (reducedMotion.matches || !finePointer.matches) return
+
         let targetX = 0
         let targetY = 0
         let currentX = 0
         let currentY = 0
         let animationFrameId = 0
         let isHovered = false
+        let isAnimating = false
 
         // Iniciar no centro por padrão
         const initCoords = () => {
@@ -105,11 +110,17 @@ export function Hero() {
                 if (!isHovered) {
                     isHovered = true
                     spotlight.style.opacity = '1'
+                    if (!isAnimating) {
+                        isAnimating = true
+                        animationFrameId = requestAnimationFrame(updatePosition)
+                    }
                 }
             } else {
                 if (isHovered) {
                     isHovered = false
                     spotlight.style.opacity = '0'
+                    cancelAnimationFrame(animationFrameId)
+                    isAnimating = false
                 }
             }
         }
@@ -121,15 +132,16 @@ export function Hero() {
 
             spotlight.style.background = `radial-gradient(circle 280px at ${currentX}px ${currentY}px, rgba(6, 182, 212, 0.12) 0%, rgba(6, 182, 212, 0.03) 40%, transparent 100%)`
 
-            animationFrameId = requestAnimationFrame(updatePosition)
+            if (isHovered) {
+                animationFrameId = requestAnimationFrame(updatePosition)
+            } else {
+                isAnimating = false
+            }
         }
 
         // Registrar o movimento do mouse na window para evitar conflitos com elementos 3D
         window.addEventListener('mousemove', handleMouseMoveGlobal)
         
-        // Iniciar loop de animação
-        animationFrameId = requestAnimationFrame(updatePosition)
-
         // Reinicializar se a tela mudar de tamanho
         window.addEventListener('resize', initCoords)
 
@@ -149,6 +161,10 @@ export function Hero() {
         const badge3 = badge3Ref.current
 
         if (!wrapper || !frame) return
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+        const finePointer = window.matchMedia("(pointer: fine)")
+        if (reducedMotion.matches || !finePointer.matches) return
 
         const handleMouseMove = (e: MouseEvent) => {
             const isMobile = window.innerWidth < 768
@@ -261,12 +277,18 @@ export function Hero() {
 
     // Tradução dinâmica dos CTAs personalizados para manter consistência multilíngue
     const primaryCtaText = language === "pt" ? "Iniciar projeto" : language === "es" ? "Iniciar proyecto" : "Start project"
-    const secondaryCtaText = language === "pt" ? "Ver trajetória" : language === "es" ? "Ver trayectoria" : "Explore trajectory"
+    const secondaryCtaText = language === "pt" ? "Ver projetos" : language === "es" ? "Ver proyectos" : "View projects"
+    const scrollLabel = language === "pt" ? "Ir para a seção de serviços" : language === "es" ? "Ir a la sección de servicios" : "Go to services section"
+    const heroHeadlineLabel = language === "pt"
+        ? "Transformo ideias em produtos digitais que escalam e convertem."
+        : language === "es"
+            ? "Transformo ideas en productos digitales que escalan y convierten."
+            : "I turn ideas into digital products that scale and convert."
 
     return (
         <section 
             ref={sectionRef}
-            className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c1220] px-4 md:px-8 pt-20 lg:pt-0"
+            className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-[#0c1220] px-4 md:px-8 pt-20 lg:py-16"
         >
             {/* Camada Base: Azul-marinho profundo */}
             <div className="absolute inset-0 bg-[#0c1220] -z-30 pointer-events-none" />
@@ -282,7 +304,7 @@ export function Hero() {
                 {/* Text Content - Left Side */}
                 <motion.div 
                     key={language}
-                    className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 py-12 lg:py-20 w-full"
+                    className="space-y-5 sm:space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left order-1 py-10 sm:py-12 lg:py-8 w-full"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -299,7 +321,8 @@ export function Hero() {
 
                     {/* Mix tipográfico contrastante: Sans-serif Bold + Serif Itálico */}
                     <motion.h1
-                        className="font-display font-extrabold tracking-tight max-w-2xl text-white text-5xl sm:text-7xl lg:text-8xl leading-[1.1] sm:leading-[1.05] mb-4 flex flex-wrap justify-center lg:justify-start"
+                        aria-label={heroHeadlineLabel}
+                        className="font-display font-extrabold tracking-tight max-w-2xl text-white text-[clamp(2.75rem,12vw,4.5rem)] lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.08] mb-2 sm:mb-4 flex flex-wrap justify-center lg:justify-start"
                         variants={sentenceVariants}
                     >
                         {language === "pt" && (
@@ -386,7 +409,7 @@ export function Hero() {
                 {/* Image Content - Right Side: Avatar flutuante com Viewfinder e stickers técnicos */}
                 <motion.div
                     ref={photoWrapperRef}
-                    className="flex justify-center items-center lg:items-center order-1 lg:order-2 h-full pt-10 lg:pt-0 relative w-full max-w-[420px] aspect-[3/4] mx-auto overflow-visible group"
+                    className="flex justify-center items-center order-2 h-full pb-16 sm:pb-20 lg:pb-0 relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] aspect-[3/4] mx-auto overflow-visible group"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.32, 0.72, 0, 1], delay: 0.4 }}
@@ -445,7 +468,7 @@ export function Hero() {
                         </div>
                         
                                         {/* Badges Flutuantes (Stickers flutuando livremente fora da foto com profundidade 3D Z e z-index alto z-30) */}
-                        {/* 1. Full Stack · 2+ anos */}
+                        {/* 1. Experiência full stack centralizada em SITE_CONFIG */}
                         <div 
                             ref={badge1Ref}
                             className="absolute top-[96px] left-[-16px] z-30 pointer-events-auto select-none"
@@ -453,7 +476,11 @@ export function Hero() {
                         >
                             <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900/90 backdrop-blur-[12px] border border-cyan-500/30 rounded-[20px] text-[10px] font-semibold tracking-[0.1em] uppercase text-[#06b6d4] shadow-[0_4px_15px_rgba(0,0,0,0.3),inset_0_0_0_1px_rgba(255,255,255,0.05)] whitespace-nowrap">
                                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#06b6d4] mr-2 shadow-[0_0_8px_rgba(6,182,212,0.6)] animate-pulse shrink-0" />
-                                {language === "pt" ? "Full Stack · 2+ anos" : language === "es" ? "Full Stack · 2+ años" : "Full Stack · 2+ years"}
+                                {language === "pt"
+                                    ? `Full Stack · ${SITE_CONFIG.stats.yearsExperience}+ anos`
+                                    : language === "es"
+                                        ? `Full Stack · ${SITE_CONFIG.stats.yearsExperience}+ años`
+                                        : `Full Stack · ${SITE_CONFIG.stats.yearsExperience}+ years`}
                             </span>
                         </div>
 
@@ -493,8 +520,9 @@ export function Hero() {
 
             {/* Scroll Indicator */}
             <motion.a
-                href="#about"
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 group cursor-pointer"
+                href="#services"
+                aria-label={scrollLabel}
+                className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 hidden lg:flex h-11 w-11 items-center justify-center rounded-full group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5, duration: 0.6 }}

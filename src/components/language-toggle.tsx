@@ -66,13 +66,14 @@ const getFlag = (lang: string) => {
 
 export function LanguageToggle() {
     const { language, setLanguage } = useLanguage()
+    const toggleLabel = language === "pt" ? "Alterar idioma" : language === "es" ? "Cambiar idioma" : "Change language"
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="w-16 px-0">
                     {getFlag(language)}
-                    <span className="sr-only">Toggle language</span>
+                    <span className="sr-only">{toggleLabel}</span>
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

@@ -3,20 +3,15 @@
 import Image from "next/image"
 import { useLanguage } from "@/components/language-provider"
 import { motion } from "framer-motion"
-import { Globe, Sparkles, LayoutDashboard, Code2 } from "lucide-react"
 
 export function Services() {
     const { t } = useLanguage()
 
-    // Configurando os ícones Lucide para cada serviço de forma correspondente
-    const icons = [Globe, Sparkles, LayoutDashboard, Code2]
-
-    // Imagens conceituais do Unsplash para cada tipo de serviço
     const serviceImages = [
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&q=80", // Sites Institucionais (Laptop/Dev screen)
-        "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80", // Landing Pages (Mobile/Web mockups UI)
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80", // Sistemas & Dashboards (Complex code charts)
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80"  // Mentoria & Code Review (Close up clean IDE code)
+        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=82",
+        "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=82",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=82",
+        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=82",
     ]
 
     // Cores de glow correspondentes para cada tipo de serviço
@@ -27,19 +22,18 @@ export function Services() {
         "group-hover:bg-amber-500/5"
     ]
 
-    // Cores vivas e contrastantes no modo claro, sutis e elegantes no escuro
-    const iconBgColors = [
-        "dark:bg-blue-950/40 bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200/60 dark:border-blue-500/20",
-        "dark:bg-cyan-950/40 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-200/60 dark:border-cyan-500/20",
-        "dark:bg-emerald-950/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-200/60 dark:border-emerald-500/20",
-        "dark:bg-amber-950/40 bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-200/60 dark:border-amber-500/20"
-    ]
-
     const borderGlowColors = [
         "group-hover:border-blue-500/30",
         "group-hover:border-cyan-500/30",
         "group-hover:border-emerald-500/30",
         "group-hover:border-amber-500/30"
+    ]
+
+    const imageOverlays = [
+        "from-blue-950/90 via-slate-950/25 to-transparent",
+        "from-cyan-950/90 via-slate-950/25 to-transparent",
+        "from-emerald-950/90 via-slate-950/25 to-transparent",
+        "from-amber-950/90 via-slate-950/25 to-transparent",
     ]
 
     // Configuração de animações Cascade (Stagger Children)
@@ -97,37 +91,33 @@ export function Services() {
                     className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
                 >
                     {t.services.items.map((service: { title: string; description: string; stack: string }, index: number) => {
-                        const IconComponent = icons[index]
-                        
                         return (
                             <motion.div
                                 key={index}
                                 variants={cardVariants}
                                 whileHover={{ y: -8, scale: 1.01 }}
-                                className={`group relative rounded-2xl border border-transparent dark:border-white/5 bg-white dark:bg-zinc-950/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-none hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:hover:shadow-none overflow-hidden cursor-pointer transition-all duration-500 flex flex-col justify-between ${borderGlowColors[index]}`}
+                                className={`group relative rounded-2xl border border-transparent dark:border-white/5 bg-white dark:bg-zinc-950/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-none hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:hover:shadow-none overflow-hidden transition-all duration-500 flex flex-col justify-between ${borderGlowColors[index]}`}
                             >
-                                {/* Banner Image with hover zoom, rounded specifically at top */}
-                                <div className="relative h-36 w-full overflow-hidden rounded-t-2xl bg-zinc-150 dark:bg-zinc-900/60 border-b border-zinc-200/50 dark:border-white/5">
+                                {/* Fotografia temática com tratamento visual consistente. */}
+                                <div className="relative h-40 w-full overflow-hidden rounded-t-2xl bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200/50 dark:border-white/5">
                                     <Image
                                         src={serviceImages[index]}
-                                        alt={service.title}
+                                        alt=""
                                         fill
+                                        unoptimized
                                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                        className="object-cover opacity-100 dark:opacity-80 group-hover:opacity-100 transition-all duration-500 ease-out group-hover:scale-105 brightness-100 dark:brightness-[0.85] rounded-t-2xl"
+                                        className="object-cover opacity-80 saturate-[0.85] contrast-[1.05] transition-all duration-700 group-hover:scale-105 group-hover:opacity-95"
+                                        aria-hidden="true"
                                         draggable={false}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t dark:from-zinc-950/90 dark:via-zinc-950/40 dark:to-transparent from-white/80 via-transparent to-transparent pointer-events-none" />
+                                    <div className={`absolute inset-0 bg-gradient-to-t ${imageOverlays[index]} opacity-90 pointer-events-none`} />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 pointer-events-none" />
                                 </div>
 
                                 {/* Glow card background effect */}
                                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none ${glowColors[index]}`} />
                                 
-                                <div className="space-y-4 px-6 pb-6 relative z-10 -mt-10 flex-1">
-                                    {/* Overlapping Animated Icon container */}
-                                    <div className={`flex h-12 w-12 items-center justify-center rounded-full border backdrop-blur-sm transition-all duration-500 group-hover:scale-110 shadow-lg ${iconBgColors[index]}`}>
-                                        <IconComponent className="h-6 w-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6" />
-                                    </div>
-
+                                <div className="px-6 py-6 relative z-10 flex-1">
                                     <div className="space-y-2">
                                         <h3 className="font-display text-lg sm:text-xl font-bold tracking-tight text-foreground transition-colors duration-300">
                                             {service.title}

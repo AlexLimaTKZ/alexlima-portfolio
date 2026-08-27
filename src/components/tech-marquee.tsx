@@ -7,11 +7,11 @@ import { useLanguage } from "@/components/language-provider"
 export function TechMarquee() {
     const { t } = useLanguage()
 
-    // Duplicate list of icons to ensure seamless infinite looping
-    const doubledIcons = [...icon, ...icon, ...icon]
+    // Duas cópias mantêm o loop contínuo; a segunda é apenas visual.
+    const doubledIcons = [...icon, ...icon]
 
     return (
-        <section className="py-16 bg-card/10 border-y border-border/40 overflow-hidden relative">
+        <section aria-labelledby="technologies-title" className="py-16 bg-card/10 border-y border-border/40 overflow-hidden relative">
             {/* Ambient gradients behind */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] h-[100px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none" />
             <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[350px] h-[100px] bg-emerald-500/5 rounded-full blur-[80px] pointer-events-none" />
@@ -24,19 +24,21 @@ export function TechMarquee() {
                 <span className="text-xs font-semibold tracking-widest text-primary uppercase font-mono">
                     {`// Stack`}
                 </span>
-                <h3 className="font-display text-2xl font-bold tracking-tight mt-1">
+                <h2 id="technologies-title" className="font-display text-2xl font-bold tracking-tight mt-1">
                     {t.skills?.title || "Tecnologias"}
-                </h3>
+                </h2>
             </div>
 
             {/* Infinite Horizontal Loop Container */}
             <div className="marquee-container w-full overflow-hidden flex whitespace-nowrap">
-                <div className="animate-marquee flex gap-12 items-center py-4">
+                <div className="animate-marquee flex gap-12 items-center py-4" role="list">
                     {doubledIcons.map((tech, idx) => {
                         const IconComp = tech.IconComponent
                         return (
                             <div
                                 key={`${tech.name}-${idx}`}
+                                role="listitem"
+                                aria-hidden={idx >= icon.length}
                                 className="flex items-center gap-3 px-6 py-3 rounded-xl border border-border/40 bg-card/25 backdrop-blur-sm hover:border-blue-500/30 transition-all duration-300 select-none group"
                             >
                                 <IconComp 
