@@ -1,149 +1,35 @@
 "use client"
 
 import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
-import { motion } from "framer-motion"
+import { SectionLabel, EditorialTitle, ReadingText, Asterisk } from "@/components/editorial"
+import { SITE_CONFIG } from "@/lib/constants"
+import { portfolioCopy } from "@/lib/portfolio-copy"
+
+const photos = [
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=82",
+    "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=82",
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=82",
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=82",
+]
 
 export function Services() {
-    const { t } = useLanguage()
-
-    const serviceImages = [
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=82",
-        "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=900&q=82",
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=82",
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=900&q=82",
-    ]
-
-    // Cores de glow correspondentes para cada tipo de serviço
-    const glowColors = [
-        "group-hover:bg-blue-500/5",
-        "group-hover:bg-cyan-500/5",
-        "group-hover:bg-emerald-500/5",
-        "group-hover:bg-amber-500/5"
-    ]
-
-    const borderGlowColors = [
-        "group-hover:border-blue-500/30",
-        "group-hover:border-cyan-500/30",
-        "group-hover:border-emerald-500/30",
-        "group-hover:border-amber-500/30"
-    ]
-
-    const imageOverlays = [
-        "from-blue-950/90 via-slate-950/25 to-transparent",
-        "from-cyan-950/90 via-slate-950/25 to-transparent",
-        "from-emerald-950/90 via-slate-950/25 to-transparent",
-        "from-amber-950/90 via-slate-950/25 to-transparent",
-    ]
-
-    // Configuração de animações Cascade (Stagger Children)
-    const containerVariants = {
-        hidden: {},
-        visible: {
-            transition: {
-                staggerChildren: 0.12
-            }
-        }
-    }
-
-    const cardVariants = {
-        hidden: { opacity: 0, y: 35 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring" as const,
-                stiffness: 70,
-                damping: 16
-            }
-        }
-    }
-
+    const { language, t } = useLanguage()
+    const copy = portfolioCopy[language]
     return (
-        <section id="services" className="w-full bg-[#f8f9fa] dark:bg-transparent transition-colors duration-300">
-            <div className="container py-24 sm:py-32 mx-auto px-4 md:px-8 relative overflow-hidden">
-                {/* Ambient background light */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[450px] w-[450px] rounded-full bg-blue-500/[0.02] blur-[120px] pointer-events-none" />
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-center mb-16 space-y-4"
-                >
-                    <span className="text-cyan-600 dark:text-cyan-400 text-xs font-semibold tracking-[0.2em] uppercase font-mono block">
-                        {`// ${t.services.title === "Meus Serviços" || t.services.title === "Serviços" ? "SERVIÇOS" : "SERVICES"}`}
-                    </span>
-                    <h2 className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl text-foreground">
-                        {t.services.title}
-                    </h2>
-                    <p className="text-muted-foreground text-lg max-w-[800px] mx-auto font-sans">
-                        {t.services.description}
-                    </p>
-                </motion.div>
-
-                <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-                >
-                    {t.services.items.map((service: { title: string; description: string; stack: string }, index: number) => {
-                        return (
-                            <motion.div
-                                key={index}
-                                variants={cardVariants}
-                                whileHover={{ y: -8, scale: 1.01 }}
-                                className={`group relative rounded-2xl border border-transparent dark:border-white/5 bg-white dark:bg-zinc-950/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-none hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:hover:shadow-none overflow-hidden transition-all duration-500 flex flex-col justify-between ${borderGlowColors[index]}`}
-                            >
-                                {/* Fotografia temática com tratamento visual consistente. */}
-                                <div className="relative h-40 w-full overflow-hidden rounded-t-2xl bg-zinc-100 dark:bg-zinc-900/60 border-b border-zinc-200/50 dark:border-white/5">
-                                    <Image
-                                        src={serviceImages[index]}
-                                        alt=""
-                                        fill
-                                        unoptimized
-                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                        className="object-cover opacity-80 saturate-[0.85] contrast-[1.05] transition-all duration-700 group-hover:scale-105 group-hover:opacity-95"
-                                        aria-hidden="true"
-                                        draggable={false}
-                                    />
-                                    <div className={`absolute inset-0 bg-gradient-to-t ${imageOverlays[index]} opacity-90 pointer-events-none`} />
-                                    <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 pointer-events-none" />
-                                </div>
-
-                                {/* Glow card background effect */}
-                                <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none ${glowColors[index]}`} />
-                                
-                                <div className="px-6 py-6 relative z-10 flex-1">
-                                    <div className="space-y-2">
-                                        <h3 className="font-display text-lg sm:text-xl font-bold tracking-tight text-foreground transition-colors duration-300">
-                                            {service.title}
-                                        </h3>
-                                        <p className="text-muted-foreground text-sm leading-relaxed dark:group-hover:text-zinc-300 group-hover:text-zinc-700 transition-colors duration-300">
-                                            {service.description}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Stack technical badges bottom aligned with ciano borders/bg in light mode */}
-                                <div className="mt-auto px-6 pb-6 pt-4 border-t border-zinc-200/50 dark:border-white/5 relative z-10 flex flex-wrap gap-2">
-                                    {service.stack.split(' • ').map((tech: string) => (
-                                        <span 
-                                            key={tech} 
-                                            className="inline-flex items-center rounded-full dark:bg-white/5 bg-cyan-50/60 border border-cyan-200/50 dark:border-white/5 px-2.5 py-0.5 text-[9px] font-bold dark:text-zinc-300 text-cyan-700 uppercase tracking-wider group-hover:bg-cyan-100/60 dark:group-hover:bg-white/10 transition-all duration-300"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        )
-                    })}
-                </motion.div>
+        <section id="services" className="services-section section-space page-shell">
+            <SectionLabel index="02">{copy.solutions}</SectionLabel>
+            <div className="section-heading"><EditorialTitle>{copy.servicesTitle}</EditorialTitle><p data-reveal>{copy.servicesDescription}</p></div>
+            <div className="services-grid">
+                {t.services.items.map((service, index) => (
+                    <article className="service-card" data-reveal key={service.title}>
+                        <div className="service-photo"><Image src={photos[index]} alt="" fill unoptimized sizes="(min-width: 1200px) 25vw, (min-width: 640px) 50vw, 100vw" className="object-cover" data-parallax /><span className="service-number">{"0" + (index + 1)}</span></div>
+                        <div className="service-content"><h3>{service.title}</h3><p>{service.description}</p><div className="service-outcome"><span>{copy.serviceResults[index]}</span><a href={SITE_CONFIG.contact.whatsappUrl + "?text=" + encodeURIComponent(t.hero.whatsappMessage + " " + service.title)} target="_blank" rel="noopener noreferrer" aria-label={copy.start + ": " + service.title}><ArrowUpRight size={21} aria-hidden="true" /></a></div></div>
+                    </article>
+                ))}
             </div>
+            <div className="statement-block"><div className="statement-symbol" data-spin><Asterisk /></div><ReadingText>{copy.statement}</ReadingText><span className="statement-footnote">ALEX LIMA · DESIGN & CODE</span></div>
         </section>
     )
 }

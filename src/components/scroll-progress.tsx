@@ -1,19 +1,12 @@
 "use client"
 
-import { motion, useScroll, useSpring } from "framer-motion"
+import { useRef } from "react"
+import { gsap, useGSAP } from "@/lib/gsap"
 
 export function ScrollProgress() {
-    const { scrollYProgress } = useScroll()
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    })
-
-    return (
-        <motion.div
-            className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-600 shadow-[0_0_12px_rgba(6,182,212,0.8)] origin-left z-[100]"
-            style={{ scaleX }}
-        />
-    )
+    const progress = useRef<HTMLDivElement>(null)
+    useGSAP(() => {
+        gsap.fromTo(progress.current, { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: true } })
+    }, { scope: progress })
+    return <div ref={progress} className="scroll-progress" aria-hidden="true" />
 }

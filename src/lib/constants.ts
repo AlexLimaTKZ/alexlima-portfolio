@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
     shortName: "TKZ Dev",
     url: "https://alexlima-portfolio.vercel.app",
     ogImage: "/opengraph-image.png",
-    description: "Portfólio de Alex Lima (Líder TKZ), desenvolvedor Full Stack especializado em Next.js, TypeScript e .NET.",
+    description: "Sites, landing pages e sistemas sob medida por Alex Lima. Design com identidade, desenvolvimento Full Stack e soluções digitais para o seu negócio.",
     keywords: [
         "Alex Lima",
         "Full Stack Developer",
@@ -17,6 +17,9 @@ export const SITE_CONFIG = {
         "Tailwind CSS",
         "TKZ Dev",
         "Portfolio",
+        "Criação de sites",
+        "Sistemas sob medida",
+        "Landing pages",
         "Frontend",
         "Backend"
     ],

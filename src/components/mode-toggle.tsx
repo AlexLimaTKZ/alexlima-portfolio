@@ -1,27 +1,11 @@
 "use client"
-
-import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-
-import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/language-provider"
 
 export function ModeToggle() {
     const { setTheme } = useTheme()
     const { language } = useLanguage()
-    const toggleLabel = language === "pt" ? "Alternar tema" : language === "es" ? "Cambiar tema" : "Toggle theme"
-
-    const toggleTheme = React.useCallback(() => {
-        const isDark = document.documentElement.classList.contains("dark")
-        setTheme(isDark ? "light" : "dark")
-    }, [setTheme])
-
-    return (
-        <Button variant="outline" size="icon" onClick={toggleTheme} className="cursor-pointer">
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-            <span className="sr-only">{toggleLabel}</span>
-        </Button>
-    )
+    const label = language === "pt" ? "Alternar tema" : language === "es" ? "Cambiar tema" : "Toggle theme"
+    return <button type="button" className="header-control theme-toggle" aria-label={label} onClick={() => setTheme(document.documentElement.classList.contains("dark") ? "light" : "dark")}><Sun className="theme-sun" size={17} aria-hidden="true" /><Moon className="theme-moon" size={17} aria-hidden="true" /></button>
 }

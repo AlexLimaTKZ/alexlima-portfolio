@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Sora, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import "./reduced-motion.css";
 import { SITE_CONFIG, PERSON_SCHEMA } from "@/lib/constants";
@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/components/language-provider";
 import { Header } from "@/components/header";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { LenisProvider } from "@/components/lenis-provider";
+import { MotionProvider } from "@/components/motion-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +18,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
 });
 
 const playfair = Playfair_Display({
@@ -102,7 +97,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${playfair.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -110,19 +105,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LenisProvider>
-            <LanguageProvider>
+          <LanguageProvider>
+            <MotionProvider>
+              <LenisProvider>
               <a
                 href="#main-content"
-                className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-cyan-600 px-4 py-3 font-semibold text-white shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2"
+                className="skip-link"
               >
                 Pular para o conteúdo principal
               </a>
               <ScrollProgress />
               <Header />
               {children}
-            </LanguageProvider>
-          </LenisProvider>
+              </LenisProvider>
+            </MotionProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
